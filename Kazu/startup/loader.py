@@ -70,7 +70,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
             rmtree("addons")
         if not os.path.exists("addons"):
             subprocess.run(
-                f"git clone -q -b {Repo().active_branch} https://github.com/senpai80/Addons.git addons",
+                f"git clone -q -b {Repo().active_branch} https://github.com/ionmusic/Addons.git addons",
                 shell=True,
             )
         else:
