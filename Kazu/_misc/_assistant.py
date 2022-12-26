@@ -18,7 +18,7 @@ from .. import LOGS, asst, udB, kazu_bot
 from ..fns.admins import admin_check
 from . import append_or_update, owner_and_sudos
 
-OWNER = ayra_bot.full_name
+OWNER = kazu_bot.full_name
 
 MSG = f"""
 **ᴋᴀᴢᴜ ꭙ ᴜꜱᴇʀʙᴏᴛ​**
