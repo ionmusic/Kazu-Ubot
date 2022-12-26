@@ -40,8 +40,8 @@ if run_as_module:
     from telethon import __version__
     from telethon.tl.alltlobjects import LAYER
 
-    from ..version import __version__ as __Ayra__
-    from ..version import ayra_version
+    from ..version import __version__ as __Kazu__
+    from ..version import kazu_version
 
     file = f"kazu{sys.argv[6]}.log" if len(sys.argv) > 6 else "ayra.log"
 
