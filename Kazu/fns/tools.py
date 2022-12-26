@@ -399,11 +399,11 @@ async def get_paste(data: str, extension: str = "txt"):
 
 
 async def get_chatbot_reply(message):
-    from .. import ayra_bot
+    from .. import kazu_bot
 
     chatbot_base = "https://kukiapi.xyz/api/apikey=ULTROIDUSERBOT/Ultroid/{}/message={}"
     req_link = chatbot_base.format(
-        ayra_bot.me.first_name or "kazu user",
+        kazu_bot.me.first_name or "kazu user",
         message,
     )
     try:
@@ -508,19 +508,19 @@ def telegraph_client():
     if TELEGRAPH:
         return TELEGRAPH[0]
 
-    from .. import udB, ayra_bot
+    from .. import udB, kazu_bot
 
     token = udB.get_key("_TELEGRAPH_TOKEN")
     TelegraphClient = Telegraph(token)
     if token:
         TELEGRAPH.append(TelegraphClient)
         return TelegraphClient
-    gd_name = ayra_bot.full_name
+    gd_name = kazu_bot.full_name
     short_name = gd_name[:30]
     profile_url = (
-        f"https://t.me/{ayra_bot.me.username}"
-        if ayra_bot.me.username
-        else "https://t.me/stufsupport"
+        f"https://t.me/{kazu_bot.me.username}"
+        if kazu_bot.me.username
+        else "https://t.me/kazusupportgrp"
     )
     try:
         TelegraphClient.create_account(
@@ -529,7 +529,7 @@ def telegraph_client():
     except Exception as er:
         if "SHORT_NAME_TOO_LONG" in str(er):
             TelegraphClient.create_account(
-                short_name="ayrauser", author_name=gd_name, author_url=profile_url
+                short_name="kazuuser", author_name=gd_name, author_url=profile_url
             )
         else:
             LOGS.exception(er)
@@ -552,7 +552,7 @@ def make_html_telegraph(title, html=""):
 async def Carbon(
     code,
     base_url="https://carbonara-42.herokuapp.com/api/cook",
-    file_name="Ayra-Userbot",
+    file_name="Kazu-Userbot",
     **kwargs,
 ):
     kwargs["code"] = code
