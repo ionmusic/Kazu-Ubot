@@ -36,7 +36,7 @@ if sys.argv[0] == "-m":
         exit()
 
     start_time = time.time()
-    _Kazu_cache = {}
+    _kazu_cache = {}
     _ignore_eval = []
 
     udB = KazuDB()
@@ -53,7 +53,7 @@ if sys.argv[0] == "-m":
         if DUAL_MODE:
             udB.del_key("DUAL_MODE")
             DUAL_MODE = False
-        Kazu_bot = None
+        kazu_bot = None
 
         if not udB.get_key("BOT_TOKEN"):
             LOGS.critical(
@@ -62,29 +62,29 @@ if sys.argv[0] == "-m":
 
             sys.exit()
     else:
-        Kazu_bot = KazuClient(
+        kazu_bot = KazuClient(
             validate_session(Var.SESSION, LOGS),
             udB=udB,
-            app_version=Kazu_version,
+            app_version=kazu_version,
             device_model="Kazu",
         )
-        Kazu_bot.run_in_loop(autobot())
+        kazu_bot.run_in_loop(autobot())
 
     asst = KazuClient(None, bot_token=udB.get_key("BOT_TOKEN"), udB=udB)
 
     if BOT_MODE:
-        Kazu_bot = asst
+        kazu_bot = asst
         if udB.get_key("OWNER_ID"):
             try:
-                Kazu_bot.me = Kazu_bot.run_in_loop(
-                    Kazu_bot.get_entity(udB.get_key("OWNER_ID"))
+                kazu_bot.me = kazu_bot.run_in_loop(
+                    kazu_bot.get_entity(udB.get_key("OWNER_ID"))
                 )
             except Exception as er:
                 LOGS.exception(er)
     elif not asst.me.bot_inline_placeholder:
-        Kazu_bot.run_in_loop(enable_inline(Kazu_bot, asst.me.username))
+        kazu_bot.run_in_loop(enable_inline(kazu_bot, asst.me.username))
 
-    vcClient = vc_connection(udB, Kazu_bot)
+    vcClient = vc_connection(udB, kazu_bot)
 
     _version_changes(udB)
 
@@ -100,4 +100,4 @@ else:
 
     LOGS = getLogger("Kazu")
 
-    Kazu_bot = asst = udB = vcClient = None
+    kazu_bot = asst = udB = vcClient = None
