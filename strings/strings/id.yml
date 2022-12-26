@@ -136,7 +136,7 @@ autopic_4: "AUTOPIC tidak digunakan !!"
 autopic_5: "AUTOPIC Berhenti!"
 
 # inline
-riz_1: "ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ "
+kazu_1: "ʌʏꝛᴀ ꭙ ᴜꜱᴇꝛʙᴏᴛ "
 inline_1: "**◈ {}\n\n๏ Modul : {}**"
 inline_2: "**◈ {}\n\n๏ Tambahan : {}**"
 inline_3: "**◈ {}\n\n๏ Tambahan : {}\n\n Ketik `.setdb ADDONS True` Kemudian Restart.**"
