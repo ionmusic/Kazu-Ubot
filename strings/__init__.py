@@ -2,12 +2,12 @@ import sys
 import os
 from typing import Any, Dict, List, Union
 from glob import glob
-from Ayra import *
-from Ayra.fns.tools import translate
+from Kazu import *
+from Kazu.fns.tools import translate
 try:
     from yaml import safe_load
 except ModuleNotFoundError:
-    from Ayra.fns.tools import safe_load
+    from Kazu.fns.tools import safe_load
 
 AyConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "id")
 
