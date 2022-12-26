@@ -9,7 +9,7 @@ try:
 except ModuleNotFoundError:
     from Kazu.fns.tools import safe_load
 
-AyConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "id")
+KazuConfig.lang = udB.get_key("language") or os.getenv("LANGUAGE", "id")
 
 languages = {}
 
@@ -26,7 +26,7 @@ for file in glob("strings/strings/*yml"):
 
 
 def get_string(key: str, _res: bool = True) -> Any:
-    lang = AyConfig.lang or "id"
+    lang = KazuConfig.lang or "id"
     try:
         return languages[lang][key]
     except KeyError:
