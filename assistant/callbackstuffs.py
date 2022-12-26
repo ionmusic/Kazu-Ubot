@@ -50,7 +50,7 @@ def text_to_url(event):
 
 _buttons = {
     "otvars": {
-        "text": "Variabel lain untuk ditetapkan @stufsupport:",
+        "text": "Variabel lain untuk ditetapkan @kazusupportgrp:",
         "buttons": [
             [
                 Button.inline("TAG LOG", data="taglog"),
