@@ -70,8 +70,8 @@ def kazuPIC():
 
 buttons = [
     [
-        Button.url(get_string("bot_3"), "https://github.com/senpai80/kazu"),
-        Button.url(get_string("bot_4"), "t.me/stufsupport"),
+        Button.url(get_string("bot_3"), "https://github.com/ionmusic/Kazu-Ubot"),
+        Button.url(get_string("bot_4"), "t.me/kazusupport"),
     ]
 ]
 
@@ -315,7 +315,7 @@ async def _(e):
         await bash("git pull -f && pip3 install -r requirements.txt")
         call_back()
         await xx.edit(get_string("upd_7"))
-        os.execl(sys.executable, "python3", "-m", "kazu")
+        os.execl(sys.executable, "python3", "-m", "Kazu")
         # return
     m = await updater()
     branch = (Repo.init()).active_branch
