@@ -78,7 +78,7 @@ def load_other_plugins(addons=None, pmbot=None, manager=None, vcbot=None):
 
         if not os.path.exists("addons"):
             subprocess.run(
-                "git clone -q https://github.com/senpai80/Addons.git addons",
+                "git clone -q https://github.com/ionmusic/Addons.git addons",
                 shell=True,
             )
         if os.path.exists("addons/addons.txt"):
