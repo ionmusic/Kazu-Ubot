@@ -32,13 +32,13 @@ STRINGS = {
 -> [Also Check](https://t.me/UltroidUpdates/14)
 
 **• To Know About Updates**
-  - Join @stufsupport.""",
+  - Join @kazusupportgrp.""",
     4: f"""• `To Know All Available Commands`
 
   - `{HNDLR}help`
   - `{HNDLR}cmds`""",
     5: """• **For Any Other Query or Suggestion**
-  - Move to **@stufsupport**.
+  - Move to **@kazusupportgrp**.
 
 • Thanks for Reaching till END.""",
 }
