@@ -66,7 +66,7 @@ async def inline_handler(event):
     for x in LIST.values():
         z.extend(x)
     text = get_string("inline_4").format(
-        riz,
+        kazu,
         len(HELP.get("Official", [])),
         len(HELP.get("Addons", [])),
         len(z),
@@ -110,7 +110,7 @@ async def setting(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            riz,
+            kazu,
             len(HELP.get("Official", [])),
             len(HELP.get("Addons", [])),
             len(z),
@@ -144,7 +144,7 @@ async def help_func(kazu):
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
-    text = _strings.get(key, "").format(riz, len(HELP.get(key)))
+    text = _strings.get(key, "").format(kazu, len(HELP.get(key)))
     await kazu.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
@@ -273,7 +273,7 @@ async def opner(event):
         z.extend(x)
     await event.edit(
         get_string("inline_4").format(
-            riz,
+            kazu,
             len(HELP.get("Official", [])),
             len(HELP.get("Addons", [])),
             len(z),
