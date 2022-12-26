@@ -28,7 +28,7 @@ RP_BUTTONS = [
     [Button.url("Support Group", "t.me/kazusupportgrp")],
 ]
 
-AYSTRING = """🎇 **Thanks for Deploying ᴋᴀᴢᴜ ꭙ ᴜꜱᴇʀʙᴏᴛ!**
+KAZUSTRING = """🎇 **Thanks for Deploying ᴋᴀᴢᴜ ꭙ ᴜꜱᴇʀʙᴏᴛ!**
 
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
 
