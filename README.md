@@ -83,4 +83,4 @@ Kazu is licensed under [GNU Affero General Public License](https://www.gnu.org/l
 * [MarshalX](https://github.com/MarshalX) for [PyTgCalls.](https://github.com/MarshalX/tgcalls)
 
 > Kanged by
-* [![Kazu](https://img.shields.io/static/v1?label=↻ꝛɪᴢ&message=ꭙ&color=critical)](https://t.me/disinikazu)
+* [![Kazu](https://img.shields.io/static/v1?label=Kazu&message=ꭙ&color=critical)](https://t.me/disinikazu)
