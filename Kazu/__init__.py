@@ -27,7 +27,7 @@ if sys.argv[0] == "-m":
     from .startup.BaseClient import KazuClient
     from .startup.connections import validate_session, vc_connection
     from .startup.funcs import _version_changes, autobot, enable_inline, update_envs
-    from .version import Kazu_version
+    from .version import kazu_version
 
     if not os.path.exists("./plugins"):
         LOGS.error(
