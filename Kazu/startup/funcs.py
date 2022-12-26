@@ -103,13 +103,13 @@ async def startup_stuff():
     CT = udB.get_key("CUSTOM_THUMBNAIL")
     if CT:
         path = "resources/extras/thumbnail.jpg"
-        AyConfig.thumb = path
+        KazuConfig.thumb = path
         try:
             await download_file(CT, path)
         except Exception as er:
             LOGS.exception(er)
     elif CT is False:
-        AyConfig.thumb = None
+        KazuConfig.thumb = None
     GT = udB.get_key("GDRIVE_AUTH_TOKEN")
     if GT:
         with open("resources/auth/gdrive_creds.json", "w") as t_file:
