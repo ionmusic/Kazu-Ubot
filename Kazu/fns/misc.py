@@ -285,8 +285,8 @@ INSTA_CLIENT = []
 
 
 async def _insta_login():
-    if "insta_creds" in Kazu All Cmds._cache:
-        return Kazu All Cmds._cache["insta_creds"]
+    if "insta_creds" in kazu_bot._cache:
+        return kazu_bot._cache["insta_creds"]
     username = udB.get_key("INSTA_USERNAME")
     password = udB.get_key("INSTA_PASSWORD")
     if username and password:
@@ -294,7 +294,7 @@ async def _insta_login():
         cl = Client(settings)
         try:
             cl.login(username, password)
-            Kazu All Cmds._cache.update({"insta_creds": cl})
+            kazu_bot._cache.update({"insta_creds": cl})
         except ManualInputRequired:
             LOGS.exception(format_exc())
             # await get_insta_code(cl, username, password)
@@ -308,14 +308,14 @@ async def _insta_login():
             return False
         udB.set_key("INSTA_SET", str(cl.get_settings()))
         cl.logger.setLevel(WARNING)
-        return Kazu All Cmds._cache["insta_creds"]
+        return kazu_bot._cache["insta_creds"]
     return False
 
 
 async def get_insta_code(username, choice):
-    from .. import asst, Kazu All Cmds
+    from .. import asst, kazu_bot
 
-    async with asst.conversation(Kazu All Cmds.uid, timeout=60 * 2) as conv:
+    async with asst.conversation(kazu_bot.uid, timeout=60 * 2) as conv:
         await conv.send_message(
             "Enter The **Instagram Verification Code** Sent to Your Email.."
         )
