@@ -135,17 +135,17 @@ _strings = {"Official": helps, "Addons": zhelps, "VCBot": get_string("inline_6")
 
 
 @callback(re.compile("uh_(.*)"), owner=True)
-async def help_func(kazu):
-    key, count = kazu.data_match.group(1).decode("utf-8").split("_")
+async def help_func(ayra):
+    key, count = ayra.data_match.group(1).decode("utf-8").split("_")
     if key == "VCBot" and HELP.get("VCBot") is None:
-        return await kazu.answer(get_string("help_12"), alert=True)
+        return await ayra.answer(get_string("help_12"), alert=True)
     elif key == "Addons" and HELP.get("Addons") is None:
-        return await kazu.answer(get_string("help_13").format(HNDLR), alert=True)
+        return await ayra.answer(get_string("help_13").format(HNDLR), alert=True)
     if "|" in count:
         _, count = count.split("|")
     count = int(count) if count else 0
     text = _strings.get(key, "").format(kazu, len(HELP.get(key)))
-    await kazu.edit(text, buttons=page_num(count, key), link_preview=False)
+    await ayra.edit(text, buttons=page_num(count, key), link_preview=False)
 
 
 @callback(re.compile("uplugin_(.*)"), owner=True)
