@@ -811,7 +811,7 @@ async def in_pm_ans(event):
                 await event.builder.document(
                     res,
                     title="Inline PmPermit",
-                    description="[↻ꝛɪᴢ](https://t.me/riizzvbss)",
+                    description="[↻ꝛɪᴢ](https://t.me/disinikazu)",
                     text=msg_,
                     buttons=buttons,
                     link_preview=False,
@@ -828,7 +828,7 @@ async def in_pm_ans(event):
                 title="Inline PMPermit.",
                 type=_type,
                 text=msg_,
-                description="[↻ꝛɪᴢ](https://t.me/riizzvbss)",
+                description="[↻ꝛɪᴢ](https://t.me/disinikazu)",
                 include_media=include_media,
                 buttons=buttons,
                 thumb=cont,
