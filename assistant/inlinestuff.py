@@ -39,7 +39,7 @@ SUP_BUTTONS = [
 
 ofox = "https://graph.org/file/231f0049fcd722824f13b.jpg"
 gugirl = "https://graph.org/file/0df54ae4541abca96aa11.jpg"
-kazupic = "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg"
+kazupic = "https://graph.org/file/e2f568b76280fadc8ee54.jpg"
 
 apis = [
     "QUl6YVN5QXlEQnNZM1dSdEI1WVBDNmFCX3c4SkF5NlpkWE5jNkZV",
