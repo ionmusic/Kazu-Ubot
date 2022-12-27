@@ -27,10 +27,9 @@ DEVLIST = [
 ]
 
 KAZU_IMAGES = [
-    f"https://telegra.ph/file/{_}.jpg"
+    f"https://graph.org/file/{_}.jpg"
     for _ in [
-        "e2f568b76280fadc8ee54",
-        "e2f568b76280fadc8ee54",
+        "9b26db2c351d68d71dc1d",
     ]
 ]
 
