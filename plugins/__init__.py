@@ -29,7 +29,7 @@ from Kazu._misc._decorators import kazu_cmd, compile_pattern
 from Kazu._misc import owner_and_sudos, sudoers
 from Kazu.fns.admins import admin_check
 from Kazu._misc._wrappers import eod, eor
-from Kazu.dB import DEVLIST, kazu_IMAGES
+from Kazu.dB import DEVLIST, KAZU_IMAGES
 from Kazu.fns.ytdl import get_videos_link
 from Kazu.fns.helper import *
 from Kazu.fns.info import *
@@ -50,7 +50,7 @@ LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
     if INLINE_PIC is None:
-        INLINE_PIC = choice(kazu_IMAGES)
+        INLINE_PIC = choice(KAZU_IMAGES)
     elif INLINE_PIC == False:
         INLINE_PIC = None
     return INLINE_PIC
