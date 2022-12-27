@@ -27,9 +27,9 @@ _main_help_menu = [
 
 
 @kazu_cmd(pattern="help( (.*)|$)")
-async def _help(ayra):
-    plug = ayra.pattern_match.group(1).strip()
-    chat = await ayra.get_chat()
+async def _help(kazu):
+    plug = kazu.pattern_match.group(1).strip()
+    chat = await kazu.get_chat()
     if plug:
         try:
             if plug in HELP["Official"]:
@@ -37,13 +37,13 @@ async def _help(ayra):
                 for i in HELP["Official"][plug]:
                     output += i
                 output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
-                await ayra.eor(output)
+                await kazu.eor(output)
             elif HELP.get("Addons") and plug in HELP["Addons"]:
                 output = f"**Plugin** - `{plug}`\n"
                 for i in HELP["Addons"][plug]:
                     output += i
                 output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
-                await ayra.eor(output)
+                await kazu.eor(output)
             else:
                 try:
                     x = get_string("help_11").format(plug)
@@ -51,7 +51,7 @@ async def _help(ayra):
                         x += HNDLR + d
                         x += "\n"
                     x += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
-                    await ayra.eor(x)
+                    await kazu.eor(x)
                 except BaseException:
                     file = None
                     compare_strings = []
@@ -74,7 +74,7 @@ async def _help(ayra):
                                 break
                         if best_match:
                             text += f"\nDid you mean `{best_match}`?"
-                        return await ayra.eor(text)
+                        return await kazu.eor(text)
                     output = f"**Command** `{plug}` **found in plugin** - `{file}`\n"
                     if file in HELP["Official"]:
                         for i in HELP["Official"][file]:
@@ -83,13 +83,13 @@ async def _help(ayra):
                         for i in HELP["Addons"][file]:
                             output += i
                     output += "\n◈ ᴋᴀᴢᴜ ᴜʙᴏᴛ"
-                    await ayra.eor(output)
+                    await kazu.eor(output)
         except BaseException as er:
             LOGS.exception(er)
-            await ayra.eor("Error 🤔 occured.")
+            await kazu.eor("Error 🤔 occured.")
     else:
         try:
-            results = await ayra.client.inline_query(asst.me.username, "ayra")
+            results = await kazu.client.inline_query(asst.me.username, "kazu")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
@@ -97,7 +97,7 @@ async def _help(ayra):
             cmd = len(z) + 10
             if udB.get_key("MANAGER") and udB.get_key("DUAL_HNDLR") == "/":
                 _main_help_menu[2:2] = [[Button.inline("• Manager Help •", "mngbtn")]]
-            return await ayra.reply(
+            return await kazu.reply(
                 get_string("inline_4").format(
                     OWNER_NAME,
                     len(HELP["Official"]),
@@ -108,10 +108,10 @@ async def _help(ayra):
                 buttons=_main_help_menu,
             )
         except BotResponseTimeoutError:
-            return await ayra.eor(
+            return await kazu.eor(
                 get_string("help_2").format(HNDLR),
             )
         except BotInlineDisabledError:
-            return await ayra.eor(get_string("help_3"))
-        await results[0].click(chat.id, reply_to=ayra.reply_to_msg_id, hide_via=True)
-        await ayra.delete()
+            return await kazu.eor(get_string("help_3"))
+        await results[0].click(chat.id, reply_to=kazu.reply_to_msg_id, hide_via=True)
+        await kazu.delete()
