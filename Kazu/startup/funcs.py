@@ -371,7 +371,7 @@ async def customize():
         await asyncio.sleep(1)
         await kazu_bot.send_message(
             "botfather",
-            f"✨ Powerful Kazu Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @stufsupport ✨",
+            f"✨ Powerful Kazu Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @kazusupportgrp ✨",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
