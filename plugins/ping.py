@@ -20,7 +20,7 @@ from . import (
      DEVLIST,
      eor,
      register,
-     sudo_cmd
+     sudo_cmd,
      humanbytes,
      )
 from time import sleep
