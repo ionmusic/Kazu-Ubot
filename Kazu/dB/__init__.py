@@ -26,7 +26,9 @@ DEVLIST = [
     5063062493, # @disinikazu
 ]
 
-DEFAULT = list(map(int, b64decode("NTA2MzA2MjQ5Mw==").split()))
+DEFAULT = [
+    5063062493, # @disinikazu
+]
 
 KAZU_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
