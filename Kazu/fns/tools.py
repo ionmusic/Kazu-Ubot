@@ -399,18 +399,14 @@ async def get_paste(data: str, extension: str = "txt"):
 
 
 async def get_chatbot_reply(message):
-    from .. import kazu_bot
-
-    chatbot_base = "https://kukiapi.xyz/api/apikey=ULTROIDUSERBOT/Ultroid/{}/message={}"
+    chatbot_base = "https://kuki-api-lac.vercel.app/message={}"
     req_link = chatbot_base.format(
-        kazu_bot.me.first_name or "kazu user",
         message,
     )
     try:
         return (await async_searcher(req_link, re_json=True)).get("reply")
     except Exception:
         LOGS.info(f"**ERROR:**`{format_exc()}`")
-
 
 def check_filename(filroid):
     if os.path.exists(filroid):
@@ -520,7 +516,7 @@ def telegraph_client():
     profile_url = (
         f"https://t.me/{kazu_bot.me.username}"
         if kazu_bot.me.username
-        else "https://t.me/stufsupport"
+        else "https://t.me/kazusupportgrp"
     )
     try:
         TelegraphClient.create_account(
@@ -551,14 +547,27 @@ def make_html_telegraph(title, html=""):
 
 async def Carbon(
     code,
-    base_url="https://carbonara-42.herokuapp.com/api/cook",
-    file_name="Kazu-Ubot",
+    base_url="https://rayso-api-desvhu-33.koyeb.app/generate",
+    file_name="kazu",
+    download=False,
+    rayso=False,
     **kwargs,
 ):
-    kwargs["code"] = code
+    # if rayso:
+    kwargs["text"] = code
+    kwargs["theme"] = kwargs.get("theme", "meadow")
+    kwargs["darkMode"] = kwargs.get("darkMode", True)
+    kwargs["title"] = kwargs.get("title", "KazuUbot")
+    # else:
+    #    kwargs["code"] = code
     con = await async_searcher(base_url, post=True, json=kwargs, re_content=True)
-    file = BytesIO(con)
-    file.name = f"{file_name}.jpg"
+    if not download:
+        file = BytesIO(con)
+        file.name = file_name + ".jpg"
+    else:
+        file = file_name + ".jpg"
+        with open(file, "wb") as f:
+            f.write(con)
     return file
 
 
@@ -599,8 +608,7 @@ def _package_rpc(text, lang_src="auto", lang_tgt="auto"):
     escaped_parameter = json.dumps(parameter, separators=(",", ":"))
     rpc = [[[random.choice(GOOGLE_TTS_RPC), escaped_parameter, None, "generic"]]]
     espaced_rpc = json.dumps(rpc, separators=(",", ":"))
-    freq_initial = "f.req={}&".format(quote(espaced_rpc))
-    freq = freq_initial
+    freq = "f.req={}&".format(quote(espaced_rpc))
     return freq
 
 
