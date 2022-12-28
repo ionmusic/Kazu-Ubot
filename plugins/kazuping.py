@@ -59,7 +59,7 @@ kazucakep = [
     "**𝙆𝙖𝙢𝙪 𝙅𝙖𝙢𝙚𝙩 𝙏𝙖𝙥𝙞 𝘽𝙤𝙤𝙣𝙜** 😚",
 ]
 
-#register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
+@register(pattern=r"^Cping$", incoming=True, from_users=DEVLIST)
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -82,7 +82,7 @@ async def _(ping):
 
 # Absen by : mrismanaziz <https://github.com/mrismanaziz/man-userbot>
 
-@register(incoming=True, from_users=DEVLIST, pattern=r"^Absen$")
+@register(pattern=r"^Absen$", incoming=True, from_users=DEVLIST,)
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
