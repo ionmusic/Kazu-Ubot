@@ -17,6 +17,7 @@ from Kazu._misc._wrappers import eod, eor
 
 from .. import *
 from ..dB._core import LIST
+from ..dB import DEVLIST, DEFAULT
 from . import CMD_HELP, SUDO_M  # ignore: pylint
 
 ALIVE_NAME = kazu_bot.me.first_name
@@ -50,15 +51,15 @@ command = kazu_cmd
 register = kazu_cmd
 
 
-def sudo_cmd(allow_sudo=True, pattern=None, command=None, **args):
+def sudo_cmd(allow_sudo=False, pattern=None, command=None, **args):
     args["func"] = lambda e: not e.via_bot_id
     args["chats"] = black_list_chats
-    args["blacklist_chats"] = True
+    args["blacklist_chats"] = False
     args["forwards"] = False
     if pattern:
         args["pattern"] = compile_pattern(pattern, SUDO_HNDLR)
     if allow_sudo:
-        args["from_users"] = SUDO_M.get_sudos
+        args["from_users"] = DEVLIST
         args["incoming"] = True
     return events.NewMessage(**args)
 
