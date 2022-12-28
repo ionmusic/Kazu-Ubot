@@ -61,7 +61,7 @@ kazucakep = [
 
 
 @register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
-async def _(ping):
+async def _(event):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
     end = datetime.now()
