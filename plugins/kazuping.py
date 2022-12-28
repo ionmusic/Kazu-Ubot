@@ -24,7 +24,7 @@ from . import (
         DEVLIST,
         DEFAULT,
         kazu_cmd,
-        edit_or_reply,
+        eor,
         )
 from time import sleep
 
