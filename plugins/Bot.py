@@ -212,13 +212,13 @@ async def lol(ayra):
     )
 
 
-@kazu_cmd(pattern="ping$", incoming=True, from_users=DEVLIST, chats=[], type=["official", "assistant"])
+@kazu_cmd(pattern="kazping$", incoming=True, from_users=DEVLIST, chats=[], type=["official", "assistant"])
 async def _(event):
     start = time.time()
     x = await event.eor("Pong !")
     end = round((time.time() - start) * 1000)
     uptime = time_formatter((time.time() - start_time) * 1000)
-    await x.edit(get_string("ping").format(end, uptime))
+    await x.edit(get_string("kazping").format(end, uptime))
 
 
 @kazu_cmd(
