@@ -78,7 +78,7 @@ async def _(ping):
 
 # Absen by : mrismanaziz <https://github.com/mrismanaziz/man-userbot>
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
+@register(incoming=True, from_users=DEVLIST, pattern=r"^Absen$")
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
