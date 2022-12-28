@@ -17,8 +17,8 @@ from datetime import datetime
 from secrets import choice
 
 
-from Kazu.startup.utils import CMD_HNDLR
-from Kazu.startup.utils import CMD_HELP, StartTime
+from Kazu.startup.utils import HNDLR
+from Kazu.startup.utils import HELP, StartTime
 from Kazu.dB import DEVLIST
 from Kazu.events import register
 from .ping import get_readable_time
