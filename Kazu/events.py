@@ -41,7 +41,7 @@ def register(**args):
     if "trigger_on_fwd" in args:
         del args["trigger_on_fwd"]
 
-    if "own" in args:
+    if "owner" in args:
         del args["owner"]
         args["incoming"] = True
         args["from_users"] = DEFAULT
