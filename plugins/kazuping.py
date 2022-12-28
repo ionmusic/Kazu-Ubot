@@ -59,8 +59,7 @@ kazucakep = [
     "**𝙆𝙖𝙢𝙪 𝙅𝙖𝙢𝙚𝙩 𝙏𝙖𝙥𝙞 𝘽𝙤𝙤𝙣𝙜** 😚",
 ]
 
-
-@register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
+#register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
