@@ -19,7 +19,7 @@ from speedtest import Speedtest
 from time import sleep
 
 from .ping import get_readable_time
-from . import CMD_HANDLER as cmd
+from .import CMD_HANDLER as cmd
 
 from . import (
      StartTime,
