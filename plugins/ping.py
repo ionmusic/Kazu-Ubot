@@ -21,7 +21,7 @@ from . import (
      DEVLIST,
      eor,
      humanbytes,
-     
+     )
 from time import sleep
 
 
