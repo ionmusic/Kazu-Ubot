@@ -25,6 +25,7 @@ from . import (
         DEFAULT,
         sudo_cmd,
         register,
+        edit_or_reply,
         )
 from time import sleep
 
