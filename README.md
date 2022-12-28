@@ -2,7 +2,7 @@
   <img src="./resources/extras/logo.jpg" alt="Kazu Logo">
 </p>
 <h1 align="center">
-  <b>ᴋᴀᴢᴜ ꭙ ᴜꜱᴇʀʙᴏᴛ​</b>
+  <b>ᴋᴀᴢᴜ ꭙ ᴜʙᴏᴛ​</b>
 </h1>
 
 <b>A stable pluggable Telegram userbot + Voice & Video Call music bot, based on Telethon and Pyrogram.</b>
