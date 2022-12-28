@@ -19,7 +19,7 @@ from speedtest import Speedtest
 from time import sleep
 
 from .ping import get_readable_time
-from Kazu.db import CMD_HANDLER as cmd
+from . import CMD_HANDLER as cmd
 
 from . import (
      StartTime,
@@ -60,14 +60,16 @@ kazucakep = [
     "**𝙆𝙖𝙢𝙪 𝙅𝙖𝙢𝙚𝙩 𝙏𝙖𝙥𝙞 𝘽𝙤𝙤𝙣𝙜** 😚",
 ]
 
-ping = [
-"**㋡ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ㋡**\n\n㋡ **ᴘɪɴɢᴇʀ :** `{} ms`\n㋡ **ᴜᴘᴛɪᴍᴇ :** `{}`\n㋡ **ᴏᴡɴᴇʀ :** `{}`\n㋡ **ɪᴅ :** `{}`"
-]
-
 @register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
-async def kazuping(ping):
-    await ping.reply(choice(ping))
-
+async def _(ping):
+    uptime = await get_readable_time((time.time() - StartTime))
+    start = datetime.now()
+    end = datetime.now()
+    duration = (end - start).microseconds / 1000
+    user = await ping.client.get_me()
+    message = "**㋡ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ㋡**\n\n㋡ **ᴘɪɴɢᴇʀ :** `{} ms`\n㋡ **ᴜᴘᴛɪᴍᴇ :** `{}`\n㋡ **ᴏᴡɴᴇʀ :** `{}`\n㋡ **ɪᴅ :** `{}`"
+    await ping.reply(message.format(duration, uptime, user.first_name, user.id)
+                     )
 
 # KALO NGEFORK absen ini GA USAH DI HAPUS YA GOBLOK 😡
 # JANGAN DI HAPUS GOBLOK 😡 LU COPY AJA TINGGAL TAMBAHIN
