@@ -56,15 +56,15 @@ async def get_readable_time(seconds: int) -> str:
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    Kazu = await eor(ping, "**★**")
-    await Kazu.edit("**✧✧**")
-    await Kazu.edit("**✧✧✧**")
-    await Kazu.edit("**✧✧✧✧**")
-    await Kazu.edit("**✧✧✧✧✧**")
+    ping = await eor(ping, "**✧**")
+    await ping.edit("**✧✧**")
+    await ping.edit("**✧✧✧**")
+    await ping.edit("**✧✧✧✧**")
+    await ping.edit("**✧✧✧✧✧**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
-    await eor("⚡")
+    await ping.edit("⚡")
     sleep(3)
     await eor(
         f"**✧ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧**\n\n"
