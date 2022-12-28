@@ -19,7 +19,6 @@ from speedtest import Speedtest
 from time import sleep
 
 from .ping import get_readable_time
-from .import CMD_HANDLER as cmd
 
 from . import (
      StartTime,
@@ -90,13 +89,3 @@ async def kazu(ganteng):
 # ========================×========================
 #            Jangan Hapus Credit Ngentod
 # ========================×========================
-
-
-CMD_HELP.update(
-    {
-        "yinsping": f"**Plugin:** `Kazuping`\
-        \n\n  »  **Perintah : **`Perintah Ini Hanya Untuk Devs 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 Tod.`\
-        \n  »  **Kegunaan :** __Silahkan Ketik `{cmd}ping` Untuk Publik.__\
-    "
-    }
-)
