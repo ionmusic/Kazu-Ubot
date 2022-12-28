@@ -17,7 +17,7 @@ from datetime import datetime
 from secrets import choice
 
 
-from Kazu.startup.utils import HNDLR as cmd
+from Kazu.startup.utils import HNDLR 
 from Kazu.startup.utils import HELP, StartTime
 from Kazu.dB import DEVLIST
 from Kazu.events import register
@@ -53,7 +53,7 @@ kazucakep = [
 ]
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Cping$")
+@register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -86,11 +86,3 @@ async def kazu(ganteng):
 # ========================×========================
 
 
-CMD_HELP.update(
-    {
-        "kazuping": f"**Plugin:** `Kazuping`\
-        \n\n  »  **Perintah : **`Perintah Ini Hanya Untuk Devs 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 Tod.`\
-        \n  »  **Kegunaan :** __Silahkan Ketik `{cmd}ping` Untuk Publik.__\
-    "
-    }
-)
