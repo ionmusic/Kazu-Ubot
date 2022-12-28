@@ -18,179 +18,26 @@
 
 import random
 
-import os
-from secrets import choice
-from telethon.tl import types
 from telethon.utils import get_display_name
 
-from Kazu.fns.tools import Carbon
-from . import kazu_cmd, eor, get_string, inline_mention, os
+from . import Carbon, eor, get_string, inline_mention, os, kazu_cmd
 
-def vcmention(user):
-    full_name = get_display_name(user)
-    if not isinstance(user, types.User):
-        return full_name
-    return f"[{full_name}](tg://user?id={user.id})"
-    
-    
-all_col = [
-    "Black",
-    "Navy",
-    "DarkBlue",
-    "MediumBlue",
-    "Blue",
-    "DarkGreen",
-    "Green",
-    "Teal",
-    "DarkCyan",
-    "DeepSkyBlue",
-    "DarkTurquoise",
-    "MediumSpringGreen",
-    "Lime",
-    "SpringGreen",
-    "Aqua",
-    "Cyan",
-    "MidnightBlue",
-    "DodgerBlue",
-    "LightSeaGreen",
-    "ForestGreen",
-    "SeaGreen",
-    "DarkSlateGray",
-    "DarkSlateGrey",
-    "LimeGreen",
-    "MediumSeaGreen",
-    "Turquoise",
-    "RoyalBlue",
-    "SteelBlue",
-    "DarkSlateBlue",
-    "MediumTurquoise",
-    "Indigo  ",
-    "DarkOliveGreen",
-    "CadetBlue",
-    "CornflowerBlue",
-    "RebeccaPurple",
-    "MediumAquaMarine",
-    "DimGray",
-    "DimGrey",
-    "SlateBlue",
-    "OliveDrab",
-    "SlateGray",
-    "SlateGrey",
-    "LightSlateGray",
-    "LightSlateGrey",
-    "MediumSlateBlue",
-    "LawnGreen",
-    "Chartreuse",
-    "Aquamarine",
-    "Maroon",
-    "Purple",
-    "Olive",
-    "Gray",
-    "Grey",
-    "SkyBlue",
-    "LightSkyBlue",
-    "BlueViolet",
-    "DarkRed",
-    "DarkMagenta",
-    "SaddleBrown",
-    "DarkSeaGreen",
-    "LightGreen",
-    "MediumPurple",
-    "DarkViolet",
-    "PaleGreen",
-    "DarkOrchid",
-    "YellowGreen",
-    "Sienna",
-    "Brown",
-    "DarkGray",
-    "DarkGrey",
-    "LightBlue",
-    "GreenYellow",
-    "PaleTurquoise",
-    "LightSteelBlue",
-    "PowderBlue",
-    "FireBrick",
-    "DarkGoldenRod",
-    "MediumOrchid",
-    "RosyBrown",
-    "DarkKhaki",
-    "Silver",
-    "MediumVioletRed",
-    "IndianRed ",
-    "Peru",
-    "Chocolate",
-    "Tan",
-    "LightGray",
-    "LightGrey",
-    "Thistle",
-    "Orchid",
-    "GoldenRod",
-    "PaleVioletRed",
-    "Crimson",
-    "Gainsboro",
-    "Plum",
-    "BurlyWood",
-    "LightCyan",
-    "Lavender",
-    "DarkSalmon",
-    "Violet",
-    "PaleGoldenRod",
-    "LightCoral",
-    "Khaki",
-    "AliceBlue",
-    "HoneyDew",
-    "Azure",
-    "SandyBrown",
-    "Wheat",
-    "Beige",
-    "WhiteSmoke",
-    "MintCream",
-    "GhostWhite",
-    "Salmon",
-    "AntiqueWhite",
-    "Linen",
-    "LightGoldenRodYellow",
-    "OldLace",
-    "Red",
-    "Fuchsia",
-    "Magenta",
-    "DeepPink",
-    "OrangeRed",
-    "Tomato",
-    "HotPink",
-    "Coral",
-    "DarkOrange",
-    "LightSalmon",
-    "Orange",
-    "LightPink",
-    "Pink",
-    "Gold",
-    "PeachPuff",
-    "NavajoWhite",
-    "Moccasin",
-    "Bisque",
-    "MistyRose",
-    "BlanchedAlmond",
-    "PapayaWhip",
-    "LavenderBlush",
-    "SeaShell",
-    "Cornsilk",
-    "LemonChiffon",
-    "FloralWhite",
-    "Snow",
-    "Yellow",
-    "LightYellow",
-    "Ivory",
-    "White",
-]
+_colorspath = "resources/colorlist.txt"
+
+if os.path.exists(_colorspath):
+    with open(_colorspath, "r") as f:
+        all_col = f.read().split()
+else:
+    all_col = []
 
 
-@kazu_cmd(pattern="(rc|c)arbon")
+@kazu_cmd(
+    pattern="(rc|c)arbon",
+)
 async def crbn(event):
-    from_user = vcmention(event.sender)
-    xxxx = await eor(event, get_string("com_1"))
-    te = event.text
-    col = choice(all_col) if te[1] == "r" else "Grey"
+    xxxx = await event.eor(get_string("com_1"))
+    te = event.pattern_match.group(1)
+    col = random.choice(all_col) if te[0] == "r" else "White"
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -204,8 +51,7 @@ async def crbn(event):
         try:
             code = event.text.split(" ", maxsplit=1)[1]
         except IndexError:
-            return await eor(xxxx, get_string("carbon_2"), time=30
-                             )
+            return await eor(xxxx, get_string("carbon_2"))
     xx = await Carbon(code=code, file_name="kazu_carbon", backgroundColor=col)
     await xxxx.delete()
     await event.reply(
@@ -214,14 +60,14 @@ async def crbn(event):
     )
 
 
-@kazu_cmd(pattern="ccarbon ?(.*)")
-async def ccrbn(event):
-    from_user = vcmention(event.sender)
+@kazu_cmd(
+    pattern="ccarbon( (.*)|$)",
+)
+async def crbn(event):
     match = event.pattern_match.group(1).strip()
     if not match:
-        return await eor(event, get_string("carbon_3")
-                         )
-    msg = await eor(event, get_string("com_1"))
+        return await event.eor(get_string("carbon_3"))
+    msg = await event.eor(get_string("com_1"))
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
         if temp.media:
@@ -237,8 +83,7 @@ async def ccrbn(event):
             code = match[1]
             match = match[0]
         except IndexError:
-            return await eor(msg, get_string("carbon_2"), time=30
-                             )
+            return await eor(msg, get_string("carbon_2"))
     xx = await Carbon(code=code, backgroundColor=match)
     await msg.delete()
     await event.reply(
@@ -257,3 +102,36 @@ RaySoTheme = [
     "sunset",
     "midnight",
 ]
+
+@kazu_cmd(pattern="rayso")
+async def pass_on(kaz):
+    spli = kaz.text.split()
+    theme, dark, title, text = None, True, get_display_name(kaz.chat), None
+    if len(spli) > 2:
+        if spli[1] in RaySoTheme:
+            theme = spli[1]
+        dark = spli[2].lower().strip() in ["true", "t"]
+    elif len(spli) > 1:
+        if spli[1] in RaySoTheme:
+            theme = spli[1]
+        elif spli[1] == "list":
+            text = "**List of Rayso Themes:**\n" + "\n".join(
+                [f"- `{th_}`" for th_ in RaySoTheme]
+            )
+
+            await kaz.eor(text)
+            return
+        else:
+            try:
+                text = kaz.text.split(maxsplit=1)[1]
+            except IndexError:
+                pass
+    if not theme:
+        theme = random.choice(RaySoTheme)
+    if kaz.is_reply:
+        msg = await kaz.get_reply_message()
+        text = msg.text
+        title = get_display_name(msg.sender)
+    await kaz.reply(
+        file=await Carbon(text, rayso=True, title=title, theme=theme, darkMode=dark)
+    )
