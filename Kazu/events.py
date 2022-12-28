@@ -17,6 +17,7 @@ from traceback import format_exc
 from telethon import events
 
 from .dB import CMD_HANDLER, CMD_LIST, DEFAULT, DEVLIST
+from . import kazu_bot
 
 
 def kazu_cmd(pattern=None, command=None, **args):
