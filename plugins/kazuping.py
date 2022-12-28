@@ -17,12 +17,13 @@ from datetime import datetime
 from secrets import choice
 from speedtest import Speedtest
 from time import sleep
-from Kazu.events import register
+
 from .ping import get_readable_time
-from . import kazu_cmd as cmd
+from Kazu.db import CMD_HANDLER as cmd
+
 from . import (
      StartTime,
-     kazu_cmd,
+     register,
      DEVLIST,
      eor,
      humanbytes,
