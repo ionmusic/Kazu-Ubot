@@ -9,6 +9,8 @@ if not run_as_module:
 
 from .. import *
 
+CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
+
 DEVLIST = [
     719195224,  # @xditya
     1322549723,  # @danish_00
