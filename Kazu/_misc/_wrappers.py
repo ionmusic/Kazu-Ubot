@@ -16,7 +16,7 @@ from telethon.tl.types import MessageService
 
 async def eor(event, text=None, time=None, link_preview=False, edit_time=None, **args):
     reply_to = event
-    if event.out and not isinstance(event, MessageService):
+    if event and not isinstance(event, MessageService):
         if edit_time:
             await sleep(edit_time)
         if "file" in args and args["file"] and not event.media:
