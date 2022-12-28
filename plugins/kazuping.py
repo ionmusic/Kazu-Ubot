@@ -17,7 +17,7 @@ from datetime import datetime
 from secrets import choice
 
 
-from Kazu import CMD_HANDLER as cmd
+from Kazu import CMD_HNDLR as cmd
 from Kazu import CMD_HELP, StartTime
 from Kazu import DEVS
 from Kazu.events import register
