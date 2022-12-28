@@ -44,7 +44,7 @@ async def eor(event, text=None, time=None, link_preview=False, edit_time=None, *
     return ok
 
 
-async def eor(event, text=None, **kwargs):
+async def eod(event, text=None, **kwargs):
     kwargs["time"] = kwargs.get("time", 8)
     return await eor(event, text, **kwargs)
 
