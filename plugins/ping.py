@@ -56,7 +56,7 @@ async def get_readable_time(seconds: int) -> str:
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    Ayiin = await edit_or_reply(ping, "**✧**")
+    Ayiin = await eor(ping, "**✧**")
     await eor("**✧✧**")
     await eor("**✧✧✧**")
     await eor("**✧✧✧✧**")
@@ -78,7 +78,7 @@ async def _(ping):
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    xping = await edit_or_reply(ping, "`Pinging....`")
+    xping = await eor(ping, "`Pinging....`")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     await xping.edit(
@@ -90,7 +90,7 @@ async def _(ping):
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    lping = await edit_or_reply(ping, "**★ PING ★**")
+    lping = await eor(ping, "**★ PING ★**")
     await lping.edit("**★★ PING ★★**")
     await lping.edit("**★★★ PING ★★★**")
     await lping.edit("**★★★★ PING ★★★★**")
@@ -111,7 +111,7 @@ async def _(ping):
 async def _(pong):
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    kopong = await edit_or_reply(pong, "**『⍟𝐊𝐎𝐍𝐓𝐎𝐋』**")
+    kopong = await eor(pong, "**『⍟𝐊𝐎𝐍𝐓𝐎𝐋』**")
     await kopong.edit("**◆◈𝐊𝐀𝐌𝐏𝐀𝐍𝐆◈◆**")
     await kopong.edit("**𝐏𝐄𝐂𝐀𝐇𝐊𝐀𝐍 𝐁𝐈𝐉𝐈 𝐊𝐀𝐔 𝐀𝐒𝐔**")
     await kopong.edit("**☬𝐒𝐈𝐀𝐏 𝐊𝐀𝐌𝐏𝐀𝐍𝐆 𝐌𝐄𝐍𝐔𝐌𝐁𝐔𝐊 𝐀𝐒𝐔☬**")
@@ -133,7 +133,7 @@ async def _(pong):
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    kping = await edit_or_reply(pong, "8✊===D")
+    kping = await eor(pong, "8✊===D")
     await kping.edit("8=✊==D")
     await kping.edit("8==✊=D")
     await kping.edit("8===✊D")
@@ -164,7 +164,7 @@ async def _(pong):
 
 @kazu_cmd(pattern="speedtest$")
 async def _(speed):
-    xxnx = await edit_or_reply(speed, "`Running speed test...`")
+    xxnx = await eor(speed, "`Running speed test...`")
     test = Speedtest()
     test.get_best_server()
     test.download()
@@ -196,7 +196,7 @@ async def _(speed):
 @kazu_cmd(pattern="pong$")
 async def _(pong):
     start = datetime.now()
-    xx = await edit_or_reply(pong, "`Sepong`")
+    xx = await eor(pong, "`Sepong`")
     await xx.edit("Sepong Sayang.....")
     end = datetime.now()
     duration = (end - start).microseconds / 9000
