@@ -15,6 +15,7 @@ from datetime import datetime
 from speedtest import Speedtest
 
 from . import kazu_cmd as cmd
+from Kazu.events import register
 from . import (
      StartTime,
      kazu_cmd,
@@ -52,7 +53,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@kazu_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
+@register(pattern=r"^ping$", incoming=True, from_users=DEVLIST)
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
