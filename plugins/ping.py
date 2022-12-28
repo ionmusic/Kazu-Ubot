@@ -56,7 +56,7 @@ async def get_readable_time(seconds: int) -> str:
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    ping await eor(ping, "**✧**")
+    await eor(ping, "**✧**")
     await eor("**✧✧**")
     await eor("**✧✧✧**")
     await eor("**✧✧✧✧**")
