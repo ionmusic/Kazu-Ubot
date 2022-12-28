@@ -63,17 +63,6 @@ def sudo_cmd(allow_sudo=False, pattern=None, command=None, **args):
         args["incoming"] = True
     return events.NewMessage(**args)
 
-def register(allow_sudo=False, pattern=None, command=None, **args):
-    args["func"] = lambda e: not e.via_bot_id
-    args["chats"] = black_list_chats
-    args["blacklist_chats"] = False
-    args["forwards"] = False
-    if pattern:
-        args["pattern"] = compile_pattern(pattern, SUDO_HNDLR)
-    if allow_sudo:
-        args["from_users"] = DEVLIST
-        args["incoming"] = True
-
 
 edit_or_reply = eor
 edit_delete = eod
@@ -119,8 +108,8 @@ class Config((object)):
         CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
         BLACKLIST_CHAT = UB_BLACK_LIST_CHAT
         MONGO_URI = os.environ.get("MONGO_URI", None)
-        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO", None)
-        ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
+        ALIVE_PHOTTO = os.environ.get("ALIVE_PHOTTO", "False")
+        ALIVE_PIC = os.environ.get("ALIVE_PIC", "False")
         ALIVE_MSG = os.environ.get("ALIVE_MSG", None)
         DEFAULT_BIO = os.environ.get("DEFAULT_BIO", None)
         BIO_MSG = os.environ.get("BIO_MSG", None)
