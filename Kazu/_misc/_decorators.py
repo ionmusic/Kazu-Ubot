@@ -64,50 +64,15 @@ def compile_pattern(data, hndlr):
     return re.compile("\\" + hndlr + data)
 
 
-def kazu_cmd(pattern=None, command=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
-    stack = inspect.stack()
-    previous_stack_frame = stack[1]
-    file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace(".py", "")
-    args.get("allow_sudo", False)
-    if pattern is not None:
-        if pattern.startswith(r"\#"):
-            args["pattern"] = re.compile(pattern)
-        elif pattern.startswith(r"^"):
-            args["pattern"] = re.compile(pattern)
-            cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
-        else:
-            if len(CMD_HANDLER) == 2:
-                catreg = "^" + CMD_HANDLER
-                reg = CMD_HANDLER[1]
-            elif len(CMD_HANDLER) == 1:
-                catreg = "^\\" + CMD_HANDLER
-                reg = CMD_HANDLER
-            args["pattern"] = re.compile(catreg + pattern)
-            if command is not None:
-                cmd = reg + command
-            else:
-                cmd = (
-                    (reg +
-                     pattern).replace(
-                        "$",
-                        "").replace(
-                        "\\",
-                        "").replace(
-                        "^",
-                        ""))
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
-
-    if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        del args["allow_edited_updates"]
+def kazu_cmd(
+    pattern=None, manager=False, kazu_bot=kazu_bot, asst=asst, **kwargs
+):
+    owner_only = kwargs.get("owner_only", False)
+    groups_only = kwargs.get("groups_only", False)
+    admins_only = kwargs.get("admins_only", False)
+    fullsudo = kwargs.get("fullsudo", False)
+    only_devs = kwargs.get("only_devs", False)
+    func = kwargs.get("func", lambda e: not e.via_bot_id)
 
     
 def register(**args):
