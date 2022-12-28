@@ -20,11 +20,11 @@ from time import sleep
 
 from .ping import get_readable_time
 
-from Kazu.dB import (
+from . import (
         DEVLIST,
         DEFAULT,
-        CMD_HANDLER,
-        CMD_LIST,
+        sudo_cmd,
+        register,
         )
 from time import sleep
 
@@ -75,12 +75,12 @@ async def _(ping):
 
 # Absen by : mrismanaziz <https://github.com/mrismanaziz/man-userbot>
 
-@register(incoming=True, from_users=DEVLIST, pattern=r"^Absen$")
+@sudo_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Absen$")
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@register(incoming=True, from_users=DEVLIST, pattern=r"^Aku ganteng kan$")
+@sudo_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Aku ganteng kan$")
 async def kazu(ganteng):
     await ganteng.reply(choice(kazucakep))
 
