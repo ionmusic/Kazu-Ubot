@@ -66,7 +66,7 @@ async def _(ping):
     user = await ping.client.get_me()
     await ping.edit("⚡")
     sleep(3)
-    await eor(
+    await ping.edit(
         f"**✧ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧**\n\n"
         f"✧ **𝙿𝙸𝙽𝙶𝙴𝚁 :** `%sms`\n"
         f"✧ **𝚄𝙿𝚃𝙸𝙼𝙴 :** `{uptime}` \n"
