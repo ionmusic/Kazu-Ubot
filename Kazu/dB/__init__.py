@@ -26,6 +26,9 @@ DEVLIST = [
     5063062493, # @disinikazu
 ]
 
+cmd = CMD_HANDLER
+CMD_LIST = {}
+
 DEFAULT = [
     5063062493, # @disinikazu
 ]
