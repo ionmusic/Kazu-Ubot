@@ -29,7 +29,7 @@ from Kazu._misc._decorators import kazu_cmd, compile_pattern
 from Kazu._misc import owner_and_sudos, sudoers
 from Kazu.fns.admins import admin_check
 from Kazu._misc._wrappers import eod, eor
-from Kazu.dB import DEVLIST, KAZU_IMAGES
+from Kazu.dB import DEVLIST, KAZU_IMAGES, DEFAULT 
 from Kazu.fns.ytdl import get_videos_link
 from Kazu.fns.helper import *
 from Kazu.fns.info import *
