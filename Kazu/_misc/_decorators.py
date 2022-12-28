@@ -17,7 +17,7 @@ from traceback import format_exc
 from strings import get_string
 from telethon import Button
 from telethon import __version__ as telever
-from telethon.events import MessageEdited, NewMessage
+from telethon import events
 from telethon.errors.common import AlreadyInConversationError
 from telethon.errors.rpcerrorlist import (
     AuthKeyDuplicatedError,
@@ -32,12 +32,12 @@ from telethon.errors.rpcerrorlist import (
     MessageNotModifiedError,
     UserIsBotError,
 )
-
+from telethon.events import MessageEdited, NewMessage
 from telethon.utils import get_display_name
 
 from .. import *
 from .. import _ignore_eval
-from ..dB import DEVLIST, DEFAULT, CMD_HANDLER, CMD_LIST
+from ..dB import DEVLIST
 from ..dB._core import LIST, LOADED
 from ..fns.admins import admin_check
 from ..fns.helper import bash
@@ -73,54 +73,6 @@ def kazu_cmd(
     fullsudo = kwargs.get("fullsudo", False)
     only_devs = kwargs.get("only_devs", False)
     func = kwargs.get("func", lambda e: not e.via_bot_id)
-
-    
-def register(**args):
-    """Register a new event."""
-    pattern = args.get("pattern")
-    disable_edited = args.get("disable_edited", False)
-    ignore_unsafe = args.get("ignore_unsafe", False)
-    unsafe_pattern = r"^[^/!#@\$A-Za-z]"
-    groups_only = args.get("groups_only", False)
-    trigger_on_fwd = args.get("trigger_on_fwd", False)
-    disable_errors = args.get("disable_errors", False)
-    insecure = args.get("insecure", False)
-    args.get("sudo", False)
-    args.get("own", False)
-
-    if pattern is not None and not pattern.startswith("(?i)"):
-        args["pattern"] = "(?i)" + pattern
-
-    if "disable_edited" in args:
-        del args["disable_edited"]
-
-    if "sudo" in args:
-        del args["sudo"]
-        args["incoming"] = True
-        args["from_users"] = DEVS
-
-    if "ignore_unsafe" in args:
-        del args["ignore_unsafe"]
-
-    if "groups_only" in args:
-        del args["groups_only"]
-
-    if "disable_errors" in args:
-        del args["disable_errors"]
-
-    if "trigger_on_fwd" in args:
-        del args["trigger_on_fwd"]
-
-    if "own" in args:
-        del args["own"]
-        args["incoming"] = True
-        args["from_users"] = DEFAULT
-
-    if "insecure" in args:
-        del args["insecure"]
-
-    if pattern and not ignore_unsafe:
-        args["pattern"] = pattern.replace("^.", unsafe_pattern, 1)
 
     def decor(dec):
         async def wrapp(ay):
