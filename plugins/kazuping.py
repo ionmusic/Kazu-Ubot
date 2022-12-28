@@ -1,12 +1,12 @@
-# Ayiin - Userbot
-# Copyright (C) 2022-2023 @AyiinXd
+# Kazu - Ubot
+# Copyright (C) 2022-2023 @TeamKazu
 #
-# This file is a part of < https://github.com/AyiinXd/Ayiin-Userbot >
+# This file is a part of < https://github.com/ionmusic/Kazu-Ubot >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/AyiinXd/Ayiin-Userbot/blob/main/LICENSE/>.
+# <https://www.github.com/ionmusic/Kazu-Ubot/blob/main/LICENSE/>.
 #
-# FROM Ayiin-Userbot <https://github.com/AyiinXd/Ayiin-Userbot>
-# t.me/AyiinXdSupport & t.me/AyiinSupport
+# FROM Kazu-Ubot <https://github.com/ionmusic/Kazu-Ubot >
+# t.mekazusupportgrp
 
 # ========================×========================
 #            Jangan Hapus Credit Ngentod
@@ -57,6 +57,11 @@ kazucakep = [
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
+    ping = await eor(ping, "**✧**")
+    await ping.edit("**✧✧**")
+    await ping.edit("**✧✧✧**")
+    await ping.edit("**✧✧✧✧**")
+    await ping.edit("**✧✧✧✧✧**")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     user = await ping.client.get_me()
