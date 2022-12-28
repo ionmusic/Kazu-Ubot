@@ -14,13 +14,12 @@ from datetime import datetime
 
 from speedtest import Speedtest
 
-from . import kazu_cmd as cmd
-from Kazu.events import register
 from . import (
      StartTime,
      kazu_cmd,
      DEVLIST,
      eor,
+     register,
      humanbytes,
      )
 from time import sleep
