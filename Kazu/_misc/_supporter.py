@@ -63,6 +63,17 @@ def sudo_cmd(allow_sudo=False, pattern=None, command=None, **args):
         args["incoming"] = True
     return events.NewMessage(**args)
 
+def register(allow_sudo=False, pattern=None, command=None, **args):
+    args["func"] = lambda e: not e.via_bot_id
+    args["chats"] = black_list_chats
+    args["blacklist_chats"] = False
+    args["forwards"] = False
+    if pattern:
+        args["pattern"] = compile_pattern(pattern, SUDO_HNDLR)
+    if allow_sudo:
+        args["from_users"] = DEVLIST
+        args["incoming"] = True
+
 
 edit_or_reply = eor
 edit_delete = eod
