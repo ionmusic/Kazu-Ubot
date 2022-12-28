@@ -129,7 +129,7 @@ async def _(pong):
 # .keping & kping Coded by Koala
 
 
-@kazu_cmd(pattern=r"kping$")
+@kazu_cmd(pattern=r"kaz$")
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
