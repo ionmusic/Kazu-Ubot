@@ -32,7 +32,7 @@ from telethon.errors.rpcerrorlist import (
     MessageNotModifiedError,
     UserIsBotError,
 )
-from telethon.events import MessageEdited, NewMessage
+
 from telethon.utils import get_display_name
 
 from .. import *
