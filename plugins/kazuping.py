@@ -15,11 +15,13 @@
 import time
 from datetime import datetime
 from secrets import choice
-
-
+from speedtest import Speedtest
+from time import sleep
 from Kazu.dB import DEVLIST
 from Kazu.events import register
 from .Bot import get_readable_time
+from .import StartTime
+
 
 
 absen = [
