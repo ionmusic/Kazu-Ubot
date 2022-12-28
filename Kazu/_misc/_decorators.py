@@ -109,7 +109,6 @@ def kazu_cmd(pattern=None, command=None, **args):
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
 
-    return events.NewMessage(**args)
     
 def register(**args):
     """Register a new event."""
