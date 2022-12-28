@@ -23,8 +23,7 @@ from .ping import get_readable_time
 from . import (
         DEVLIST,
         DEFAULT,
-        sudo_cmd,
-        register,
+        kazu_cmd,
         edit_or_reply,
         )
 from time import sleep
