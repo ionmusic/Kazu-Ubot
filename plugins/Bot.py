@@ -12,8 +12,12 @@ __doc__ = get_help("help_bot")
 import os
 import sys
 import time
+from datetime import datetime
+from speedtest import Speedtest
+from time import sleep
 from platform import python_version as pyver
 from random import choice
+
 
 from telethon import __version__
 from telethon.errors.rpcerrorlist import (
@@ -85,6 +89,34 @@ alive_txt = """
 """
 
 in_alive = "{}\n\n◈ <b>Kazu Version -><b> <code>{}</code>\n◈ <b>Kazu -></b> <code>{}</code>\n◈ <b>Python -></b> <code>{}</code>\n◈ <b>Waktu aktif -></b> <code>{}</code>\n◈ <b>Branch -></b> [ {} ]\n\n• <b>© ᴋᴀᴢᴜ ᴜʙᴏᴛ​</b>"
+
+
+async def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "Jam", "Hari"]
+
+    while count < 4:
+        count += 1
+        remainder, result = divmod(
+            seconds, 60) if count < 3 else divmod(
+            seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        up_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    up_time += ":".join(time_list)
+
+    return up_time
+
 
 
 @callback("alive")
