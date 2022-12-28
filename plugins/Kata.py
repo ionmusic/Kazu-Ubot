@@ -51,13 +51,13 @@ from . import (
     kazu_cmd,
 )
 
-@kazu_cmd(pattern="Riz$")
+@kazu_cmd(pattern="zu$")
 async def _(event):
     xx = await event.eor("Aku")
     sleep(3)
     await xx.edit("Cuma Mau Bilang")
     sleep(2)
-    await xx.edit("Kalo Bang Riz ...")
+    await xx.edit("Kalo Bang Kazu ...")
     sleep(1)
     await xx.edit("Ganteng Banget")
 
