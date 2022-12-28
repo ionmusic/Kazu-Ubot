@@ -19,8 +19,6 @@ from . import (
      kazu_cmd,
      DEVLIST,
      eor,
-     register,
-     sudo_cmd,
      humanbytes,
      )
 from time import sleep
