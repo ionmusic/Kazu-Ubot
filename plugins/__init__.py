@@ -46,6 +46,8 @@ OWNER_ID = kazu_bot.uid
 
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
 
+StartTime = time.time()
+
 
 def inline_pic():
     INLINE_PIC = udB.get_key("INLINE_PIC")
