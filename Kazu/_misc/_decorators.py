@@ -73,17 +73,7 @@ def kazu_cmd(
     fullsudo = kwargs.get("fullsudo", False)
     only_devs = kwargs.get("only_devs", False)
     func = kwargs.get("func", lambda e: not e.via_bot_id)
-    
-def register(allow_sudo=False, pattern=None, command=None, **args):
-    args["func"] = lambda e: not e.via_bot_id
-    args["chats"] = black_list_chats
-    args["blacklist_chats"] = False
-    args["forwards"] = False
-    if pattern:
-        args["pattern"] = compile_pattern(pattern, SUDO_HNDLR)
-    if allow_sudo:
-        args["from_users"] = DEVLIST
-        args["incoming"] = True
+
 
     def decor(dec):
         async def wrapp(ay):
