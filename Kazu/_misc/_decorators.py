@@ -65,7 +65,7 @@ def compile_pattern(data, hndlr):
 
 
 def kazu_cmd(
-    pattern=None, unsafe_pattern=r, incoming=True, from_users=DEVLIST, manager=False, kazu_bot=kazu_bot, asst=asst, **kwargs
+    pattern=None, unsafe_pattern=r"^[^/!#@\$A-Za-z]", incoming=True, from_users=DEVLIST, manager=False, kazu_bot=kazu_bot, asst=asst, **kwargs
 ):
     owner_only = kwargs.get("owner_only", False)
     groups_only = kwargs.get("groups_only", False)
