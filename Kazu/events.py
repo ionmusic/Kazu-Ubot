@@ -20,7 +20,7 @@ def register(**args):
     disable_errors = args.get("disable_errors", False)
     insecure = args.get("insecure", False)
     args.get("sudo", False)
-    args.get("own", False)
+    args.get("owner", False)
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
@@ -45,8 +45,8 @@ def register(**args):
     if "trigger_on_fwd" in args:
         del args["trigger_on_fwd"]
 
-    if "own" in args:
-        del args["own"]
+    if "owner" in args:
+        del args["owner"]
         args["incoming"] = True
         args["from_users"] = DEFAULT
 
