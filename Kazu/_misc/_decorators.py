@@ -17,7 +17,7 @@ from traceback import format_exc
 from strings import get_string
 from telethon import Button
 from telethon import __version__ as telever
-from telethon import events
+from telethon.events import MessageEdited, NewMessage
 from telethon.errors.common import AlreadyInConversationError
 from telethon.errors.rpcerrorlist import (
     AuthKeyDuplicatedError,
