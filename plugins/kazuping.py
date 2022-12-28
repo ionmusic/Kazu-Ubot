@@ -31,24 +31,13 @@ from time import sleep
 
 
 
-@register(
-    filters.command("cping", ["."]) & filters.user(DEVLIST) & ~filters.me
-)
-@register(filters.command("kping", cmd) & filters.me)
-async def kping(client: Client, message: Message):
+@register(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
+async def _(xping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
-    xx = await eor(message, "⚡⚡⚡⚡")
-    await xx.edit("⚡")
-    await xx.edit("⚡⚡")
-    await xx.edit("⚡⚡⚡")
-    await xx.edit("⚡⚡⚡⚡✨")
-    await xx.edit("Awas awas awas babunya Kazu mau lewat😎")
     end = datetime.now()
     duration = (end - start).microseconds / 1000
-    await xx.edit(
-        f"❏ **PONG!!🏓**\n"
-        f"├• **Pinger** - `%sms`\n"
-        f"├• **Uptime -** `{uptime}` \n"
-        f"└• **Owner :** {client.me.mention}" % (duration)
-    )
+    user = await ping.client.get_me()
+    message = "**㋡ 𝙺𝙰𝚉𝚄 𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ㋡**\n\n㋡ **ᴘɪɴɢᴇʀ :** `{} ms`\n㋡ **ᴜᴘᴛɪᴍᴇ :** `{}`\n㋡ **ᴏᴡɴᴇʀ :** `{}`\n㋡ **ɪᴅ :** `{}`"
+    await ping.reply(message.format(duration, uptime, user.first_name, user.id)
+                     )
