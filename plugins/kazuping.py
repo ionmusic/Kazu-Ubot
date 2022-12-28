@@ -19,7 +19,7 @@ from secrets import choice
 
 from Kazu.dB import DEVLIST
 from Kazu.events import register
-from .ping import get_readable_time
+from .Bot import get_readable_time
 
 
 absen = [
