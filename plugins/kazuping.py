@@ -17,9 +17,9 @@ from datetime import datetime
 from secrets import choice
 
 
-from Kazu import CMD_HNDLR as cmd
-from Kazu import CMD_HELP, StartTime
-from Kazu import DEVS
+from Kazu.startup.utils import HNDLR as cmd
+from Kazu.startup.utils import HELP, StartTime
+from Kazu.dB import DEVLIST
 from Kazu.events import register
 from .ping import get_readable_time
 
@@ -71,12 +71,12 @@ async def _(ping):
 
 # Absen by : mrismanaziz <https://github.com/mrismanaziz/man-userbot>
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Absen$")
+@register(incoming=True, from_users=DEVLIST, pattern=r"^Absen$")
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
 
-@register(incoming=True, from_users=DEVS, pattern=r"^Aku ganteng kan$")
+@register(incoming=True, from_users=DEVLIST, pattern=r"^Aku ganteng kan$")
 async def kazu(ganteng):
     await ganteng.reply(choice(kazucakep))
 
