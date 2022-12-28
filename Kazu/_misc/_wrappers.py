@@ -30,7 +30,7 @@ async def eor(event, text=None, time=None, link_preview=False, edit_time=None, *
             )
         else:
             try:
-                ok = await event.edit(text, link_preview=link_preview, **args)
+                ok = await event(text, link_preview=link_preview, **args)
             except MessageNotModifiedError:
                 ok = event
     else:
