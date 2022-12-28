@@ -20,6 +20,7 @@ from . import (
      DEVLIST,
      eor,
      register,
+     sudo_cmd
      humanbytes,
      )
 from time import sleep
@@ -52,7 +53,7 @@ async def get_readable_time(seconds: int) -> str:
     return up_time
 
 
-@kazu_cmd(pattern=r"^ping$", incoming=True, from_users=DEVLIST)
+@sudo_cmd(pattern=r"^ping$", incoming=True, from_users=DEVLIST)
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
