@@ -111,7 +111,7 @@ def kazu_cmd(pattern=None, command=None, **args):
 
     return events.NewMessage(**args)
     
-    def register(**args):
+def register(**args):
     """Register a new event."""
     pattern = args.get("pattern")
     disable_edited = args.get("disable_edited", False)
