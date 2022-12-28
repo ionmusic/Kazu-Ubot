@@ -20,13 +20,12 @@ from time import sleep
 
 from .ping import get_readable_time
 
-from . import (
-     StartTime,
-     register,
-     DEVLIST,
-     eor,
-     humanbytes,
-     )
+from Kazu.dB import (
+        DEVLIST,
+        DEFAULT,
+        CMD_HANDLER,
+        CMD_LIST,
+        )
 from time import sleep
 
 
