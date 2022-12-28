@@ -28,8 +28,6 @@ from os import remove
 from pprint import pprint
 
 from telethon.utils import get_display_name
-from Kazu.fns.tools import Carbon
-from .Carbon import all_col
 from Kazu import _ignore_eval
 
 from . import *
