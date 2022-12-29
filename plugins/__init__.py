@@ -18,10 +18,14 @@ import requests
 from telethon import events
 from telethon.utils import get_display_name
 from telethon import Button, events
-from telethon.tl import functions, types  # pylint:ignore
+from telethon.tl import functions, types
 
 from pytgcalls import GroupCallFactory
 from pytgcalls.exceptions import GroupCallNotFoundError
+from telethon.errors.rpcerrorlist import (
+    ParticipantJoinMissingError,
+    ChatSendMediaForbiddenError,
+)
 
 from Kazu import *
 from Kazu._misc._assistant import asst_cmd, callback, in_pattern
@@ -38,13 +42,33 @@ from Kazu.fns.tools import *
 from Kazu.version import kazu_version, __version__ as KazuVer
 from strings import get_help, get_string
 
+
+try:
+    from yt_dlp import YoutubeDL
+except ImportError:
+    YoutubeDL = None
+    LOGS.error("'yt-dlp' not found!")
+    
+try:
+   from youtubesearchpython import VideosSearch
+except ImportError:
+    VideosSearch = None
+
 Redis = udB.get_key
 con = TgConverter
 quotly = Quotly()
 OWNER_NAME = kazu_bot.full_name
 OWNER_ID = kazu_bot.uid
 
+asstUserName = asst.me.username
 LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
+ACTIVE_CALLS, VC_QUEUE = [], {}
+MSGID_CACHE, VIDEO_ON = {}, {}
+CLIENTS = {}
+
+def VC_AUTHS():
+    _vcsudos = udB.get_key("VC_SUDOS") or []
+    return [int(a) for a in [*owner_and_sudos(), *_vcsudos]]
 
 StartTime = time.time()
 
@@ -262,31 +286,6 @@ all_col = [
     "Ivory",
     "White",
 ]
-
-try:
-    from yt_dlp import YoutubeDL
-except ImportError:
-    YoutubeDL = None
-    LOGS.error("'yt-dlp' not found!")
-
-try:
-   from youtubesearchpython import VideosSearch
-except ImportError:
-    VideosSearch = None
-
-from strings import get_string
-
-asstUserName = asst.me.username
-LOG_CHANNEL = udB.get_key("LOG_CHANNEL")
-ACTIVE_CALLS, VC_QUEUE = [], {}
-MSGID_CACHE, VIDEO_ON = {}, {}
-CLIENTS = {}
-
-
-def VC_AUTHS():
-    _vcsudos = udB.get_key("VC_SUDOS") or []
-    return [int(a) for a in [*owner_and_sudos(), *_vcsudos]]
-
 
 class Player:
     def __init__(self, chat, event=None, video=False):
