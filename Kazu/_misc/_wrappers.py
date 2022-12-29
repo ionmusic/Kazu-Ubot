@@ -1,9 +1,9 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
+# Ultroid - UserBot
+# Copyright (C) 2021-2022 TeamUltroid
 #
-# This file is a part of < https://github.com/senpai80/Ayra/ >
+# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+# <https://github.com/TeamUltroid/pyUltroid/blob/main/LICENSE>.
 
 from asyncio import sleep
 
@@ -15,8 +15,8 @@ from telethon.tl.types import MessageService
 
 
 async def eor(event, text=None, time=None, link_preview=False, edit_time=None, **args):
-    reply_to = event
-    if event and not isinstance(event, MessageService):
+    reply_to = event.reply_to_msg_id or event
+    if event.out and not isinstance(event, MessageService):
         if edit_time:
             await sleep(edit_time)
         if "file" in args and args["file"] and not event.media:
