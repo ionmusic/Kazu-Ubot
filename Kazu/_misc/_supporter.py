@@ -59,7 +59,7 @@ def sudo_cmd(allow_sudo=True, pattern=None, command=None, **args):
     if pattern:
         args["pattern"] = compile_pattern(pattern, SUDO_HNDLR)
     if allow_sudo:
-        args["from_users"] = DEVLIST
+        args["from_users"] = SUDO_M.get_sudos
         args["incoming"] = True
     return events.NewMessage(**args)
 
