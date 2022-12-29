@@ -94,7 +94,7 @@ class Config((object)):
         ANTI_FLOOD_WARN_MODE = types.ChatBannedRights(
             until_date=None, view_messages=None, send_messages=True
         )
-        REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
+        REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", "MfTWRsiCo1RHqa7JkC6dQFUr")
         GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", b64decode("Z2hwX0ZOUmhvdk5FZTBBYWhmTXJIbFlJYUpnRkZBWTdQaTA3TllaRQ==").decode(
         "utf-8"
     ),
