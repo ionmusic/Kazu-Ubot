@@ -459,7 +459,7 @@ def vc_asst(dec, **kwargs):
                 LOGS.exception(Exception)
                 await asst.send_message(
                     LOG_CHANNEL,
-                    f"VC Error - <code>{AyraVer}</code>\n\n<code>{e.text}</code>\n\n<code>{format_exc()}</code>",
+                    f"VC Error - <code>{KazuVer}</code>\n\n<code>{e.text}</code>\n\n<code>{format_exc()}</code>",
                     parse_mode="html",
                 )
 
