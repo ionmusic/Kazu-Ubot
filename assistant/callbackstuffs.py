@@ -909,6 +909,30 @@ async def set_wrns(event):
             buttons=get_back_button("cbs_pmcstm"),
         )
 
+@callback(re.compile("abs_(.*)"), owner=True)
+async def convo_handler(event: events.CallbackQuery):
+    match = event.data_match.group(1).decode("utf-8")
+    if not _convo.get(match):
+        return
+    await event.delete()
+    get_ = _convo[match]
+    back = get_["back"]
+    async with event.client.conversation(event.sender_id) as conv:
+        await conv.send_message(get_["text"])
+        response = conv.wait_event(events.NewMessage(chats=event.sender_id))
+        response = await response
+        themssg = response.message.message
+        if themssg == "/cancel":
+            return await conv.send_message(
+                "Cancelled!!",
+                buttons=get_back_button(back),
+            )
+        await setit(event, get_["var"], themssg)
+        await conv.send_message(
+            f"{get_['name']} changed to `{themssg}`",
+            buttons=get_back_button(back),
+        )
+
 
 @callback("pmmed", owner=True)
 async def media(event):
