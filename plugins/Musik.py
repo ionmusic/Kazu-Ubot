@@ -62,7 +62,7 @@ from Kazu.dB.vc_sudos import add_vcsudo, del_vcsudo, get_vcsudos, is_vcsudo
 from telethon.errors.rpcerrorlist import ChatSendMediaForbiddenError, MessageIdInvalidError
 
 
-@vc_asst("play")
+@vc_asst("p|play")
 async def play_music_(event):
     if "playfrom" in event.text.split()[0]:
         return  # For PlayFrom Conflict
@@ -435,7 +435,7 @@ async def video_c(event):
     await xx.delete()
     
     
-@vc_asst("ytplaylist")
+@vc_asst("ytplay")
 async def live_stream(e):
     xx = await e.eor(get_string("com_1"))
     if len(e.text.split()) <= 1:
