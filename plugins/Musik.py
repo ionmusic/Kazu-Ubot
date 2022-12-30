@@ -435,7 +435,7 @@ async def video_c(event):
     await xx.delete()
     
     
-@vc_asst("ytplay")
+@vc_asst("ytplaylist")
 async def live_stream(e):
     xx = await e.eor(get_string("com_1"))
     if len(e.text.split()) <= 1:
