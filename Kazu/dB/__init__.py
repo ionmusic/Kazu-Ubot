@@ -22,6 +22,7 @@ DEVLIST = [
     1803618640, # @onlymeriz
     874946835,  # @vckyaz
     997461844, # @AyiinXd
+    1191668125, # @xtsea
     1784606556,  # @greyvbss
     844432220,  # @mrismanaziz
     2059198079, # @thekingofkazu
