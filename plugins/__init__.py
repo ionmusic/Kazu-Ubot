@@ -112,6 +112,7 @@ NOSPAM_CHAT = [
     -1001795125065,  # Bagaskara Support
     -1001287188817,  # Kazu Support
     -1001459812644,  # Geez Support
+    -1001657588564,  # Niskala
 ]
 
 KANGING_STR = [
