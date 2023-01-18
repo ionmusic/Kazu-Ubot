@@ -13,10 +13,13 @@
 # ========================×========================
 
 import time
+import random
+import speedtest
+import asyncio
+from pyrogram import Client, filters
+from pyrogram.raw import functions
+from pyrogram.types import Message
 from datetime import datetime
-from secrets import choice
-from speedtest import Speedtest
-from time import sleep
 
 from .ping import get_readable_time
 
@@ -33,23 +36,12 @@ from time import sleep
 
 
 absen = [
-    "**𝙃𝙖𝙙𝙞𝙧 𝙙𝙤𝙣𝙜 𝙏𝙤𝙙** 😁",
-    "**𝙃𝙖𝙙𝙞𝙧 𝙆𝙖𝙠𝙖 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 😉",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘾𝙤𝙣𝙩𝙤𝙡** 😁",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝙂𝙖𝙣𝙩𝙚𝙣𝙜** 🥵",
-    "**𝙃𝙖𝙙𝙞𝙧 𝙉𝙜𝙖𝙗** 😎",
-    "**𝙂𝙪𝙖 𝙃𝙖𝙙𝙞𝙧 𝘼𝙗𝙖𝙣𝙜** 🥺",
-    "**𝙎𝙞 𝘾𝙖𝙠𝙚𝙥 𝙃𝙖𝙙𝙞𝙧 𝘽𝙖𝙣𝙜** 😎",
+    "**Hadir Bang** 😁",
+    "**Mmuaahh** 😉",
+    "**Hadir dong** 😁",
+    "**Hadir ganteng** 🥵",
+    "**Hadir bro** 😎",
     "**Hadir kak maap telat** 🥺",
-    "**Hadir Tuan** 🙏🏻",
-    "**Hadir Majikan** 🙏🏻",
-    "**Hadir Sayang** 😳",
-    "**Hadir Bro Kazu** 😁",
-    "**Maaf ka habis nemenin ka Kazu** 🥺",
-    "**Maaf ka habis disuruh Tuan Kazu** 🥺🙏🏻",
-    "**Hadir Kazu Sayang** 😘",
-    "**Hadir Kazu Akuuuuhhh** ☺️",
-    "**Hadir Kazu brother Aku** 🥰",
 ]
 
 kazucakep = [
@@ -81,6 +73,9 @@ async def _(ping):
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
+@Client.on_message(filters.command("absen", ["."]) & filters.user(DEVLIST) & ~filters.me)
+async def absen(client: Client, message: Message):
+    await message.reply_text(random.choice(kopi))
 
 @kazu_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Aku ganteng kan$")
 async def kazu(ganteng):
