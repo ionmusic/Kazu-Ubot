@@ -16,7 +16,7 @@ import time
 import random
 import speedtest
 import asyncio
-from pyrogram import filters
+from pyrogram import Client, filters
 from Kazu import *
 from pyrogram import Client as KazuClient
 from pyrogram.raw import functions
