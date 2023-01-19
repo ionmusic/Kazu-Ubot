@@ -17,6 +17,8 @@ import random
 import speedtest
 import asyncio
 from pyrogram import Client, filters
+from Kazu import *
+from pyrogram import Client as KazuClient
 from pyrogram.raw import functions
 from pyrogram.types import Message
 from datetime import datetime
@@ -73,7 +75,7 @@ async def _(ping):
 async def kazuabsen(ganteng):
     await ganteng.reply(choice(absen))
 
-@Client.on_message(filters.command("absen", ["."]) & filters.user(DEVLIST) & ~filters.me)
+@KazuClient.on_message(filters.command("absen", ["."]) & filters.user(DEVLIST) & ~filters.me)
 async def absen(client: Client, message: Message):
     await message.reply_text(random.choice(kopi))
 
