@@ -2,7 +2,7 @@
   "name": "Kazu Ubot",
   "description": "Pluggable telegram userbot, made in python using Telethon.",
   "logo": "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg",
-  "stack": "heroku-22",
+  "stack": "container",
   "env": {
     "API_ID": {
       "description": "Dapatkan API ID di web my.telegram.org Masukan yg APP ID Telegram",
@@ -49,7 +49,7 @@
     }
   ],
   "formation": {
-    "kazuubot": {
+    "ultroid": {
       "quantity": 1,
       "size": "basic"
     }
