@@ -49,7 +49,7 @@
     }
   ],
   "formation": {
-    "worker": {
+    "kazuubot": {
       "quantity": 1,
       "size": "basic"
     }
