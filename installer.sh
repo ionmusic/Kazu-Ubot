@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 REPO="https://github.com/ionmusic/Kazu-Ubot.git"
-DIR="/root/senpai80"
+DIR="/root/ionmusic"
 
 spinner(){
     local pid=$!
