@@ -105,6 +105,7 @@ NOSPAM_CHAT = [
     -1001687155877,  # Cilik Support
     -1001070335805,  # Private AOT
     -1001578091827,  # Prime Support
+    -1001812143750,  # Kynan Support 
     -1001675396283,  # Ayiin Support
     -1001572486389,  # Pluvia Musik
     -1001692751821,  # Ram Support
