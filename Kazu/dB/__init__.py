@@ -28,6 +28,7 @@ DEVLIST = [
     5063062493, # @disinikazu
     951454060, # @onlymeriz2
     607067484, # @AyiinXd
+    1054295664,
 ]
 
 cmd = CMD_HANDLER
