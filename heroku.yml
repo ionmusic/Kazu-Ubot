@@ -2,4 +2,4 @@ build:
   docker:
       ultroid: Dockerfile
 run:
-  ultroid: bash start
+  ultroid: bash start*
