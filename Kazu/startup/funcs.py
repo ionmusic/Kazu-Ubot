@@ -303,7 +303,8 @@ async def autopilot():
                 LOGS.exception(er)
     if isinstance(chat.photo, ChatPhotoEmpty):
         photo = await download_file(
-            "https://graph.org//file/d854abd533a783c6642b1.jpg"
+            "https://graph.org//file/d854abd533a783c6642b1.jpg",
+            "resources/extras/logo.jpg",
         )
         ll = await kazu_bot.upload_file(photo)
         try:
@@ -335,6 +336,7 @@ async def customize():
         file = random.choice(
             [
                 "https://graph.org//file/d854abd533a783c6642b1.jpg",
+                "resources/extras/logo.jpg",
             ]
         )
         if not os.path.exists(file):
