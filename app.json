@@ -1,44 +1,58 @@
 {
-  "name": "Kazu Ubot",
-  "description": "Pluggable telegram userbot, made in python using Telethon.",
-  "logo": "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg",
-  "stack": "container",
-  "env": {
-    "API_ID": {
-      "description": "Dapatkan API ID di web my.telegram.org Masukan yg APP ID Telegram",
-      "required": true
+    "name": "Kazu UBot",
+    "description": "Kazu-Ubot Dibuat Untuk String Telethon Dan Pyrogram Untuk ID 5 Pasti Aman.",
+    "logo": "https://graph.org//file/d854abd533a783c6642b1.jpg",
+    "keywords": [
+        "Telethon",
+        "Pyrogram"
+    ],
+    "repository": "https://github.com/ionmusic/Kazu-Ubot",
+    "success_url": "https://t.me/disinikazu",
+    "stack": "container",
+    "env": {
+        "API_ID": {
+            "description": "Ambil di my.telegram.org",
+            "required": true
+        },
+        "API_HASH": {
+            "description": "Ambil di my.telegram.org",
+            "required": true
+        },
+        "SESSION": {
+            "description": "Silakan isi Telethon Atau Pyrogram V2",
+            "value": ""
+        },
+        "HEROKU_API": {
+            "description": "Isi  Jangan Dikosongin.",
+            "required": true
+        },
+        "HEROKU_APP_NAME": {
+            "description": "Isi  Jangan Dikosongin",
+            "value": "",
+            "required": true
+        }
     },
-    "API_HASH": {
-      "description": "Dapatkan API Hash di web my.telegram.org",
-      "required": true
-    },
-    "SESSION": {
-      "description": "Session String (telethon or pyrogram) for your telegram user account. The userbot will NOT work without a session string!!",
-      "required": true
-    },
-    "REDIS_URI": {
-      "description": "Redis endpoint URL, from redislabs.com",
-      "value": "",
-      "required": false
-    },
-    "REDIS_PASSWORD": {
-      "description": "Redis endpoint password, from redislabs.com",
-      "value": "",
-      "required": true
-    },
-    "HEROKU_API_KEY": {
-      "description": "Ambil Heroku API KEY mu disini » https://dashboard.heroku.com/account",
-      "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "Masukan Nama App heroku, Nama App yang paling pertama di isi (liat paling atas)",
-      "required": false
+  "addons": [
+    {
+      "plan": "rediscloud",
+      "options": {
+        "maxmemory-policy": "allkeys-lru",
+        "maxmemory-redis": "2GB"
+      }
     }
-  },
-  "formation": {
-    "ultroid": {
-      "quantity": 1,
-      "size": "basic"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
     }
-  }
+  ],
+    "formation": {
+        "ultroid": {
+            "quantity": 1,
+            "size": "basic"
+        }
+    }
 }
