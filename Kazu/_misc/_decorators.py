@@ -150,7 +150,7 @@ def kazu_cmd(
                     udB.get_key("LOG_CHANNEL"),
                     "Session String expired, create new session from 👇",
                     buttons=[
-                        Button.url("Bot", "t.me/Stringman?start="),
+                        Button.url("Bot", "t.me/kazu_stringbot?start="),
                         Button.url(
                             "Repl",
                             "https://replit.com/@Kazu/KazuStringSession",
