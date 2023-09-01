@@ -319,10 +319,10 @@ async def lstqueue(event):
             return await event.eor(get_string("vcbot_2").format(str(e)))
     else:
         chat = event.chat_id
-    q = list_queue(chat)
-    if not q:
+    if q := list_queue(chat):
+        await event.eor(f"• <strong>Queue:</strong>\n\n{q}", parse_mode="html")
+    else:
         return await event.eor(get_string("vcbot_21"))
-    await event.eor(f"• <strong>Queue:</strong>\n\n{q}", parse_mode="html")
 
 
 @vc_asst("cplaylist")

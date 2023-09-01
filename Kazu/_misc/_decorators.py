@@ -60,7 +60,7 @@ def compile_pattern(data, hndlr):
         data = data[1:]
     if hndlr in [" ", "NO_HNDLR"]:
         # No Hndlr Feature
-        return re.compile("^" + data)
+        return re.compile(f"^{data}")
     return re.compile("\\" + hndlr + data)
 
 
@@ -93,8 +93,9 @@ def kazu_cmd(
             if hasattr(chat, "title"):
                 if (
                     "#noub" in chat.title.lower()
-                    and not (chat.admin_rights or chat.creator)
-                    and not (ay.sender_id in DEVLIST)
+                    and not chat.admin_rights
+                    and not chat.creator
+                    and ay.sender_id not in DEVLIST
                 ):
                     return
             if admins_only:
@@ -167,7 +168,7 @@ def kazu_cmd(
                 date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
                 naam = get_display_name(chat)
                 ftext = "**Kazu Client Error:** `Forward this to` @kazusupportgrp\n\n"
-                ftext += "**Kazu Version:** `" + str(pyver)
+                ftext += f"**Kazu Version:** `{str(pyver)}"
                 ftext += "`\n**Userbot Version:** `" + str(kazu_ver)
                 ftext += "`\n**Telethon Version:** `" + str(telever)
                 ftext += f"`\n**Hosted At:** `{HOSTED_ON}`\n\n"

@@ -49,10 +49,11 @@ async def autoupdate_local_database():
     from .. import asst, udB, kazu_bot, Var
 
     global db_url
-    db_url = (
-        udB.get_key("TGDB_URL") or Var.TGDB_URL or kazu_bot._cache.get("TGDB_URL")
-    )
-    if db_url:
+    if db_url := (
+        udB.get_key("TGDB_URL")
+        or Var.TGDB_URL
+        or kazu_bot._cache.get("TGDB_URL")
+    ):
         _split = db_url.split("/")
         _channel = _split[-2]
         _id = _split[-1]
@@ -100,8 +101,7 @@ async def startup_stuff():
         if not os.path.isdir(x):
             os.mkdir(x)
 
-    CT = udB.get_key("CUSTOM_THUMBNAIL")
-    if CT:
+    if CT := udB.get_key("CUSTOM_THUMBNAIL"):
         path = "resources/extras/thumbnail.jpg"
         KazuConfig.thumb = path
         try:
@@ -110,8 +110,7 @@ async def startup_stuff():
             LOGS.exception(er)
     elif CT is False:
         KazuConfig.thumb = None
-    GT = udB.get_key("GDRIVE_AUTH_TOKEN")
-    if GT:
+    if GT := udB.get_key("GDRIVE_AUTH_TOKEN"):
         with open("resources/auth/gdrive_creds.json", "w") as t_file:
             t_file.write(GT)
 
@@ -148,11 +147,11 @@ async def autobot():
     await kazu_bot.start()
     LOGS.info("MEMBUAT BOT TELEGRAM UNTUK ANDA DI @BotFather, Mohon Tunggu")
     who = kazu_bot.me
-    name = who.first_name + "' Bot"
+    name = f"{who.first_name}' Bot"
     if who.username:
-        username = who.username + "_bot"
+        username = f"{who.username}_bot"
     else:
-        username = "kazu_" + (str(who.id))[5:] + "_bot"
+        username = f"kazu_{str(who.id)[5:]}_bot"
     bf = "@BotFather"
     await kazu_bot(UnblockRequest(bf))
     await kazu_bot.send_message(bf, "/cancel")
@@ -187,7 +186,7 @@ async def autobot():
     await kazu_bot.send_read_acknowledge("botfather")
     if isdone.startswith("Sorry,"):
         ran = randint(1, 100)
-        username = "kazu_" + (str(who.id))[6:] + str(ran) + "_bot"
+        username = f"kazu_{str(who.id)[6:]}{ran}_bot"
         await kazu_bot.send_message(bf, username)
         await asyncio.sleep(1)
         isdone = (await kazu_bot.get_messages(bf, limit=1))[0].text
@@ -438,12 +437,11 @@ async def ready():
     else:
         MSG = f"**Kazu Ubot has been deployed!**\n➖➖➖➖➖➖➖➖➖➖\n**UserMode**: {inline_mention(kazu_bot.me)}\n**Assistant**: @{asst.me.username}\n➖➖➖➖➖➖➖➖➖➖\n**Support**: @kazusupportgrp\n➖➖➖➖➖➖➖➖➖➖"
         BTTS, PHOTO = None, None
-        prev_spam = udB.get_key("LAST_UPDATE_LOG_SPAM")
-        if prev_spam:
+        if prev_spam := udB.get_key("LAST_UPDATE_LOG_SPAM"):
             try:
                 await kazu_bot.delete_messages(chat_id, int(prev_spam))
             except Exception as E:
-                LOGS.info("Kesalahan saat Menghapus Pesan Pembaruan Sebelumnya :" + str(E))
+                LOGS.info(f"Kesalahan saat Menghapus Pesan Pembaruan Sebelumnya :{str(E)}")
         if await updater():
             BTTS = Button.inline("Pembaruan tersedia", "updtavail")
 

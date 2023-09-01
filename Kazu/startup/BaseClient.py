@@ -51,9 +51,7 @@ class KazuClient(TelegramClient):
         self.dc_id = self.session.dc_id
 
     def __repr__(self):
-        return "<Kazu.Client :\n self: {}\n bot: {}\n>".format(
-            self.full_name, self._bot
-        )
+        return f"<Kazu.Client :\n self: {self.full_name}\n bot: {self._bot}\n>"
 
     @property
     def __dict__(self):
