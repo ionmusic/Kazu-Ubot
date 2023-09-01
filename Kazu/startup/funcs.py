@@ -303,7 +303,7 @@ async def autopilot():
                 LOGS.exception(er)
     if isinstance(chat.photo, ChatPhotoEmpty):
         photo = await download_file(
-            "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg", "logo.jpg"
+            "https://graph.org//file/d854abd533a783c6642b1.jpg"
         )
         ll = await kazu_bot.upload_file(photo)
         try:
@@ -334,8 +334,7 @@ async def customize():
             sir = f"@{kazu_bot.me.username}"
         file = random.choice(
             [
-                "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg",
-                "resources/extras/logo.jpg",
+                "https://graph.org//file/d854abd533a783c6642b1.jpg",
             ]
         )
         if not os.path.exists(file):
@@ -371,7 +370,7 @@ async def customize():
         await asyncio.sleep(1)
         await kazu_bot.send_message(
             "botfather",
-            f"✨ Powerful Kazu Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @stufsupport ✨",
+            f"✨ Powerful Kazu Assistant Bot ✨\n✨ Master ~ {sir} ✨\n\n✨ Powered By ~ @KazuSupportGrp ✨",
         )
         await asyncio.sleep(2)
         await msg.edit("Completed **Auto Customisation** at @BotFather.")
@@ -431,7 +430,7 @@ async def ready():
     if not udB.get_key("INIT_DEPLOY"):  # Detailed Message at Initial Deploy
         MSG = """ **Thanks for Deploying Kazu Ubot!**
 • Here, are the Some Basic stuff from, where you can Know, about its Usage."""
-        PHOTO = "https://telegra.ph/file/e2f568b76280fadc8ee54.jpg"
+        PHOTO = "https://graph.org//file/d854abd533a783c6642b1.jpg"
         BTTS = Button.inline("• Click to Start •", "initft_2")
         udB.set_key("INIT_DEPLOY", "Done")
     else:
