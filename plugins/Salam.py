@@ -46,26 +46,26 @@ async def _(event):
     
 @kazu_cmd(pattern="ks$")
 async def _(event):
-    xx = await event.eor(f"**Hy kaa 🥺**")
+    xx = await event.eor("**Hy kaa 🥺**")
     sleep(2)
     await xx.edit("**Assalamualaikum...**")
 
 
 @kazu_cmd(pattern="jws$")
 async def _(event):
-    xx = await event.eor(event,f"**Astaghfirullah, Jawab salam dong**")
+    xx = await event.eor(event, "**Astaghfirullah, Jawab salam dong**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum**")
 
 
 @kazu_cmd(pattern="3x$")
 async def _(event):
-    xx = await event.eor(f"**Bismillah, 3x**")
+    xx = await event.eor("**Bismillah, 3x**")
     sleep(2)
     await xx.edit("**Assalamu'alaikum Bisa Kali**")
     
 @kazu_cmd(pattern="kg$")
 async def _(event):
-    xx = await event.eor(f"**Lu Ngapah Begitu ?**")
+    xx = await event.eor("**Lu Ngapah Begitu ?**")
     sleep(2)
     await xx.edit("**Keren Lu Begitu ?**")

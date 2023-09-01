@@ -53,8 +53,7 @@ def get_string(key: str, _res: bool = True) -> Any:
         return languages["id"].get(key) or f"Gagal memuat string bahasa '{key}'"
 
 def get_help(key):
-    doc = get_string(f"help_{key}", _res=False)
-    if doc:
+    if doc := get_string(f"help_{key}", _res=False):
         return get_string("cmda") + doc
 
 def get_languages() -> Dict[str, Union[str, List[str]]]:
