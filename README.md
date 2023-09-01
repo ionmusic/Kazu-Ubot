@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./resources/extras/logo.jpg" alt="Kazu Logo">
+  <img src="https://graph.org//file/d854abd533a783c6642b1.jpg" alt="Kazu Logo">
 </p>
 <h1 align="center">
   <b>ᴋᴀᴢᴜ ꭙ ᴜʙᴏᴛ​</b>
