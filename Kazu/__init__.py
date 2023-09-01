@@ -14,7 +14,7 @@ run_as_module = False
 
 class KazuConfig:
     lang = "id"
-    thumb = "https://graph.org//file/d854abd533a783c6642b1.jpg
+    thumb = "https://graph.org//file/d854abd533a783c6642b1.jpg"
 
 if sys.argv[0] == "-m":
     run_as_module = True
