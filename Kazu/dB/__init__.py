@@ -42,7 +42,7 @@ DEFAULT = [
 KAZU_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
     for _ in [
-        "9b26db2c351d68d71dc1d",
+        "d854abd533a783c6642b1",
     ]
 ]
 
