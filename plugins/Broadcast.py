@@ -157,7 +157,7 @@ async def gcast(event):
     done = 0
     err = ""
     chat_blacklist = udb.get_key("gblacklists") or []
-    chat_blacklist.append(-1001608847572)
+    chat_blacklist.append(-1001287188817)
     udb.set_key("gblacklists", chat_blacklist)
     async for x in event.client.iter_dialogs():
         if x.is_group:
