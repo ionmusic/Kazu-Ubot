@@ -73,7 +73,7 @@ async def gcast(event):
     await kk.edit(f"**Berhasil di {done} obrolan, kesalahan {er} obrolan.**")
 
 
-@ayra_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
+@kazu_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=False)
 async def gucast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -103,7 +103,7 @@ async def gucast(event):
     await kk.edit(f"Berhasil di {done} obrolan, kesalahan {er} obrolan")
 
 
-@ayra_cmd(pattern="addbl")
+@kazu_cmd(pattern="addbl")
 @register(incoming=True, from_users=DEVS, pattern=r"^Addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
@@ -133,16 +133,16 @@ async def blacklist_(event):
 """
 import asyncio
 
-from ayra.db import devs
-from ayra.db.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
-from ayra.fns.tools import create_tl_btn, format_btn, get_msg_button
+from Kazu.db import DEVS
+from Kazu.db.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
+from Kazu.fns.tools import create_tl_btn, format_btn, get_msg_button
 from telethon.errors.rpcerrorlist import floodwaiterror
 
 from . import *
 from ._inline import something
 
 
-@ayra_cmd(pattern="[gg][c][a][s][t]( (.*)|$)", fullsudo=false)
+@kazu_cmd(pattern="[gg][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gcast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -152,7 +152,7 @@ async def gcast(event):
         return await eor(
             event, "`berikan beberapa teks ke globally broadcast atau balas pesan..`"
         )
-    kk = await event.eor("`sebentar kalo limit jangan salahin kynan ya...`")
+    kk = await event.eor("`sebentar kalo limit jangan salahin Kazu ya...`")
     er = 0
     done = 0
     err = ""
@@ -182,7 +182,7 @@ async def gcast(event):
     await kk.edit(f"**berhasil di {done} obrolan, kesalahan {er} obrolan.**")
 
 
-@ayra_cmd(pattern="[gg][u][c][a][s][t]( (.*)|$)", fullsudo=false)
+@kazu_cmd(pattern="[gg][u][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gucast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -192,7 +192,7 @@ async def gucast(event):
         return await eor(
             event, "`berikan beberapa teks ke globally broadcast atau balas pesan..`"
         )
-    kk = await event.eor("`sebentar kalo limit jangan salahin kynan ya...`")
+    kk = await event.eor("`sebentar kalo limit jangan salahin Kazu ya...`")
     er = 0
     done = 0
     async for x in event.client.iter_dialogs():
@@ -212,18 +212,18 @@ async def gucast(event):
     await kk.edit(f"berhasil di {done} obrolan, kesalahan {er} obrolan")
 
 
-@ayra_cmd(pattern="addbl")
+@kazu_cmd(pattern="addbl")
 @register(incoming=true, from_users=devs, pattern=r"^addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
 
-@ayra_cmd(pattern="delbl")
+@kazu_cmd(pattern="delbl")
 async def ungblacker(event):
     await gblacker(event, "remove")
 
 
-@ayra_cmd(pattern="blchat")
+@kazu_cmd(pattern="blchat")
 async def chatbl(event):
     id = event.chat_id
     if xx := list_bl(id):
