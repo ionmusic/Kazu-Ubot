@@ -96,11 +96,11 @@ async def join_ajg():
 
     from telethon.errors import rpcerrorlist
 
-    from .. import ayra_bot
+    from .. import kazu_bot
 
     try:
-        await ayra_bot(JoinChannelRequest("kynansupport"))
-        await ayra_bot(JoinChannelRequest("KazuSupportGrp"))
+        await kazu_bot(JoinChannelRequest("kynansupport"))
+        await kazu_bot(JoinChannelRequest("KazuSupportGrp"))
     except rpcerrorlist.ChannelPrivateError:
         print(
             "Lu Di Ban Di @KazuSupportGrp atau @kynansupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu Sana."
