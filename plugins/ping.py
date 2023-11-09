@@ -52,6 +52,7 @@ async def get_readable_time(seconds: int) -> str:
 
 
 @kazu_cmd(pattern=r"^pink$", incoming=True, from_users=DEVLIST)
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Cpink$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -74,6 +75,7 @@ async def _(ping):
 
 
 @kazu_cmd(pattern="ping$")
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Cping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -86,6 +88,7 @@ async def _(ping):
 
 
 @kazu_cmd(pattern="lping$")
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Lping$")
 async def _(ping):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -107,6 +110,7 @@ async def _(ping):
 
 
 @kazu_cmd(pattern="keping$")
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kping$")
 async def _(pong):
     await get_readable_time((time.time() - StartTime))
     start = datetime.now()
@@ -129,6 +133,7 @@ async def _(pong):
 
 
 @kazu_cmd(pattern=r"kaz$")
+@devs_cmd(incoming=True, from_users=DEVLIST, pattern=r"^Kaz$")
 async def _(pong):
     uptime = await get_readable_time((time.time() - StartTime))
     start = datetime.now()
