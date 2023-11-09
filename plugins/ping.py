@@ -20,6 +20,7 @@ from . import (
      DEVLIST,
      eor,
      humanbytes,
+     devs_cmd,
      )
 from time import sleep
 
