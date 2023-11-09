@@ -20,7 +20,7 @@ from telethon import events
 
 from Kazu import kazu_bot
 from Kazu._misc._supporter import CMD_HNDLR, CMD_LIST
-from Ayra.dB import DEFAULT, DEVLIST
+from Kazu.dB import DEFAULT, DEVLIST
 
 
 def babu_cmd(pattern=None, command=None, **args):
