@@ -100,12 +100,10 @@ async def join_ajg():
 
     try:
         await ayra_bot(JoinChannelRequest("kynansupport"))
-        await ayra_bot(JoinChannelRequest("kontenfilm"))
-        await ayra_bot(JoinChannelRequest("abtnaaa"))
-        await ayra_bot(JoinChannelRequest("PesulapTelegram"))
+        await ayra_bot(JoinChannelRequest("KazuSupportGrp"))
     except rpcerrorlist.ChannelPrivateError:
         print(
-            "Lu Di Ban Di @KynanSupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu @Kenapanan."
+            "Lu Di Ban Di @KazuSupportGrp atau @kynansupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu Sana."
         )
         sys.exit(1)
 
