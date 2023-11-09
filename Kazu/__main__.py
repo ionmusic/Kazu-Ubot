@@ -21,6 +21,7 @@ def main():
         plug,
         ready,
         startup_stuff,
+        join_ajg,
     )
     from .startup.loader import load_other_plugins
 
