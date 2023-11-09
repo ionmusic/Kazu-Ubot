@@ -28,6 +28,7 @@ from telethon.errors.rpcerrorlist import (
 )
 
 from Kazu import *
+from Kazu.kita import *
 from Kazu._misc._assistant import asst_cmd, callback, in_pattern
 from Kazu._misc._decorators import kazu_cmd, compile_pattern
 from Kazu._misc import owner_and_sudos, sudoers
