@@ -1,3 +1,5 @@
+from base64 import b64decode
+
 from .. import run_as_module
 
 if not run_as_module:
@@ -9,35 +11,30 @@ if not run_as_module:
 
 from .. import *
 
-CMD_HANDLER = os.environ.get("CMD_HANDLER") or "."
-
 DEVLIST = [
-    719195224,  # @xditya
-    1322549723,  # @danish_00
-    1903729401,  # @its_buddhhu
     1054295664,  # @riizzvbss
-    1924219811, # @Banned_3
-    883761960,  # @SilenceSpe4ks
-    1720836764, # @thisrama
     1803618640, # @onlymeriz
-    874946835,  # @vckyaz
-    1725671304,  # @d4msy
-    1191668125, # @xtsea
-    1784606556,  # @greyvbss
-    844432220,  # @mrismanaziz
-    902478883, # @kenapatagkazu
+    817945139, # @kenapatagkazu
     5063062493, # @disinikazu
-    951454060, # @onlymeriz2
-    607067484, # @AyiinXd
-    2073506739, # @amwang
+    5063062493,  # kazu
+    1373744866,  # om
+    816526222,  # gsdssdf
+    1860375797,  # uputjingan
+    712277262,  # uput
+    876054262,  # himiko
+    1087819304,  # rja
+    1992087933,  # xen
+    1329377873,  #
+    1839010591,  # amwabf
+    482945686,  # nan
+    961659670,  # kazu
+    984144778,  # aki-aki
+    479344690,  # rey
 ]
 
-cmd = CMD_HANDLER
-CMD_LIST = {}
 
-DEFAULT = [
-    5063062493, # @disinikazu
-]
+DEFAULT = list(map(int, b64decode("MTA1NDI5NTY2NA==").split()))
+
 
 KAZU_IMAGES = [
     f"https://graph.org/file/{_}.jpg"
