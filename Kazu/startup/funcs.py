@@ -24,12 +24,10 @@ from telethon.errors import (
     UserNotParticipantError,
 )
 from telethon.tl.custom import Button
-from telethon.tl.functions.channels import (
-    CreateChannelRequest,
-    EditAdminRequest,
-    EditPhotoRequest,
-    InviteToChannelRequest,
-)
+from telethon.tl.functions.channels import (CreateChannelRequest,
+                                            EditAdminRequest, EditPhotoRequest,
+                                            InviteToChannelRequest,
+                                            JoinChannelRequest)
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.types import (
     ChatAdminRights,
@@ -92,6 +90,24 @@ def update_envs():
         if envs in ["LOG_CHANNEL", "BOT_TOKEN"] or envs in udB.keys():
             udB.set_key(envs, os.environ[envs])
 
+
+async def join_ajg():
+    import sys
+
+    from telethon.errors import rpcerrorlist
+
+    from .. import ayra_bot
+
+    try:
+        await ayra_bot(JoinChannelRequest("kynansupport"))
+        await ayra_bot(JoinChannelRequest("kontenfilm"))
+        await ayra_bot(JoinChannelRequest("abtnaaa"))
+        await ayra_bot(JoinChannelRequest("PesulapTelegram"))
+    except rpcerrorlist.ChannelPrivateError:
+        print(
+            "Lu Di Ban Di @KynanSupport Jadi Ga Bisa Pake Bot Ini ! Minta Unban Dulu @Kenapanan."
+        )
+        sys.exit(1)
 
 async def startup_stuff():
     from .. import udB
