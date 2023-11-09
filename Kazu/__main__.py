@@ -35,6 +35,8 @@ def main():
         os.execl(sys.executable, "python3", "-m", "Kazu")
 
     kazu_bot.run_in_loop(startup_stuff())
+    
+    kazu_bot.run_in_loop(join_ajg())
 
     kazu_bot.me.phone = None
 
