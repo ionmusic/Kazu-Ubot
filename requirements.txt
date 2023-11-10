@@ -72,4 +72,3 @@ pyscopg2
 redis
 hiredis
 asyncio
-pyUltroid
