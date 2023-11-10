@@ -1,9 +1,3 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
-#
-# This file is a part of < https://github.com/senpai80/Ayra/ >
-# PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
 from .. import udB
 
 
@@ -27,3 +21,13 @@ def rem_gblacklist(id):
 
 def is_gblacklisted(id):
     return id in get_stuff()
+
+
+def black_aja():
+    return udB.get_key("GBLACKLISTS") or {}
+
+
+def list_bl(id):
+    ok = black_aja()
+    for id in ok:
+        return "".join(f"**๏** `{z}`\n" for z in ok)
