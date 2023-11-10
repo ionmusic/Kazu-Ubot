@@ -24,8 +24,8 @@
 """
 import asyncio
 
-from Kazu.db import DEVS
-from Kazu.db.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
+from Kazu.dB import DEVLIST
+from Kazu.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
 from Kazu.fns.tools import create_tl_btn, format_btn, get_msg_button
 from telethon.errors.rpcerrorlist import floodwaiterror
 
@@ -33,7 +33,7 @@ from . import *
 from ._inline import something
 
 
-@kazu_cmd(pattern="[gg][c][a][s][t]( (.*)|$)", fullsudo=false)
+@kazu_cmd(pattern="[Gg][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gcast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -43,18 +43,18 @@ async def gcast(event):
         return await eor(
             event, "`berikan beberapa teks ke globally broadcast atau balas pesan..`"
         )
-    kk = await event.eor("`sebentar kalo limit jangan salahin Kazu ya...`")
+    kk = await event.eor("`Bebentar kalo limit jangan salahin Kazu ya...`")
     er = 0
     done = 0
     err = ""
-    chat_blacklist = udb.get_key("gblacklists") or []
+    chat_blacklist = udb.get_key("GBLACKLISTS") or []
     chat_blacklist.append(-1001287188817)
-    udb.set_key("gblacklists", chat_blacklist)
+    udb.set_key("GBLACKLISTS", chat_blacklist)
     async for x in event.client.iter_dialogs():
         if x.is_group:
             chat = x.id
             
-            if chat not in chat_blacklist and chat not in nospam_chat:
+            if chat not in chat_blacklist and chat not in NOSPAM_CHAT:
                 try:
                     await event.client.send_message(chat, msg)
                     done += 1
@@ -73,7 +73,7 @@ async def gcast(event):
     await kk.edit(f"**berhasil di {done} obrolan, kesalahan {er} obrolan.**")
 
 
-@kazu_cmd(pattern="[gg][u][c][a][s][t]( (.*)|$)", fullsudo=false)
+@kazu_cmd(pattern="[gG][u][c][a][s][t]( (.*)|$)", fullsudo=false)
 async def gucast(event):
     if xx := event.pattern_match.group(1):
         msg = xx
@@ -89,7 +89,7 @@ async def gucast(event):
     async for x in event.client.iter_dialogs():
         if x.is_user and not x.entity.bot:
             chat = x.id
-            if chat not in devs:
+            if chat not in DEVLIST:
                 try:
                     await event.client.send_message(chat, msg)
                     await asyncio.sleep(0.1)
@@ -104,7 +104,7 @@ async def gucast(event):
 
 
 @kazu_cmd(pattern="addbl")
-@register(incoming=true, from_users=devs, pattern=r"^addbl")
+@register(incoming=true, from_users=DEVLIST, pattern=r"^addbl")
 async def blacklist_(event):
     await gblacker(event, "add")
 
