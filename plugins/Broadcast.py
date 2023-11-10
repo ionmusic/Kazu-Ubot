@@ -27,7 +27,7 @@ import asyncio
 from Kazu.dB import DEVLIST
 from Kazu.dB.gcast_blacklist_db import add_gblacklist, list_bl, rem_gblacklist
 from Kazu.fns.tools import create_tl_btn, format_btn, get_msg_button
-from telethon.errors.rpcerrorlist import floodwaiterror
+from telethon.errors.rpcerrorlist import FloodWaitError
 
 from . import *
 from ._inline import something
