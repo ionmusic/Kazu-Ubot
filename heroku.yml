@@ -1,5 +1,5 @@
 build:
   docker:
-      ultroid: Dockerfile
+      worker: Dockerfile
 run:
-  ultroid: bash start*
+  worker: bash start*
