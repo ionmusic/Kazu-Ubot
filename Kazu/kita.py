@@ -19,7 +19,7 @@ from traceback import format_exc
 from telethon import events
 
 from Kazu import kazu_bot
-from Kazu._misc._supporter import CMD_HNDLR, CMD_LIST
+from Kazu._misc._supporter import CMD_HNDLR, CMD_HELP
 from Kazu.dB import DEFAULT, DEVLIST
 
 
@@ -37,9 +37,9 @@ def babu_cmd(pattern=None, command=None, **args):
             args["pattern"] = re.compile(pattern)
             cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
             try:
-                CMD_LIST[file_test].append(cmd)
+                CMD_HELP[file_test].append(cmd)
             except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
+                CMD_HELP.update({file_test: [cmd]})
         else:
             if len(CMD_HNDLR) == 2:
                 catreg = "^" + CMD_HNDLR
@@ -55,9 +55,9 @@ def babu_cmd(pattern=None, command=None, **args):
                     (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
                 )
             try:
-                CMD_LIST[file_test].append(cmd)
+                CMD_HELP[file_test].append(cmd)
             except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
+                CMD_HELP.update({file_test: [cmd]})
 
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
@@ -95,9 +95,9 @@ def command(**args):
             except BaseException:
                 pass
             try:
-                CMD_LIST[file_test].append(cmd)
+                CMD_HELP[file_test].append(cmd)
             except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
+                CMD_HELP.update({file_test: [cmd]})
         except BaseException:
             pass
 
