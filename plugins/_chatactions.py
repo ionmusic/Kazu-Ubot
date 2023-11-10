@@ -1,24 +1,22 @@
-# Ayra - UserBot
-# Copyright (C) 2021-2022 senpai80
+# Ultroid - UserBot
+# Copyright (C) 2021-2023 TeamUltroid
 #
-# This file is a part of < https://github.com/senpai80/Ayra/ >
+# This file is a part of < https://github.com/TeamUltroid/Ultroid/ >
 # PLease read the GNU Affero General Public License in
-# <https://www.github.com/senpai80/Ayra/blob/main/LICENSE/>.
+# <https://www.github.com/TeamUltroid/Ultroid/blob/main/LICENSE/>.
 
 import asyncio
-
-from telethon import events
-from telethon.errors.rpcerrorlist import UserNotParticipantError
-from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.utils import get_display_name
 
 from Kazu.dB import stickers
 from Kazu.dB.forcesub_db import get_forcesetting
 from Kazu.dB.gban_mute_db import is_gbanned
 from Kazu.dB.greetings_db import get_goodbye, get_welcome, must_thank
-from Kazu.dB.nsfw_db import is_profan
 from Kazu.fns.helper import inline_mention
-from Kazu.fns.tools import async_searcher, create_tl_btn, get_chatbot_reply
+from Kazu.fns.tools import create_tl_btn
+from telethon import events
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.utils import get_display_name
 
 try:
     from ProfanityDetector import detector
@@ -36,98 +34,77 @@ async def Function(event):
         LOGS.exception(er)
 
 
-async def DummyHandler(ayra):
-    # clean chat actions
+async def DummyHandler(bjir):
     key = udB.get_key("CLEANCHAT") or []
-    if ayra.chat_id in key:
+    if bjir.chat_id in key:
         try:
-            await ayra.delete()
+            await bjir.delete()
         except BaseException:
             pass
 
     # thank members
-    if must_thank(ayra.chat_id):
-        chat_count = (await ayra.client.get_participants(ayra.chat_id, limit=0)).total
+    if must_thank(bjir.chat_id):
+        chat_count = (await bjir.client.get_participants(bjir.chat_id, limit=0)).total
         if chat_count % 100 == 0:
             stik_id = chat_count / 100 - 1
             sticker = stickers[stik_id]
-            await ayra.respond(file=sticker)
+            await bjir.respond(file=sticker)
     # force subscribe
     if (
         udB.get_key("FORCESUB")
-        and ((ayra.user_joined or ayra.user_added))
-        and get_forcesetting(ayra.chat_id)
+        and ((bjir.user_joined or bjir.user_added))
+        and get_forcesetting(bjir.chat_id)
     ):
-        user = await ayra.get_user()
+        user = await bjir.get_user()
         if not user.bot:
-            joinchat = get_forcesetting(ayra.chat_id)
+            joinchat = get_forcesetting(bjir.chat_id)
             try:
-                await kazu_bot(GetParticipantRequest(int(joinchat), user.id))
+                await ayra_bot(GetParticipantRequest(int(joinchat), user.id))
             except UserNotParticipantError:
-                await kazu_bot.edit_permissions(
-                    ayra.chat_id, user.id, send_messages=False
+                await ayra_bot.edit_permissions(
+                    bjir.chat_id, user.id, send_messages=False
                 )
-                res = await kazu_bot.inline_query(
+                res = await ayra_bot.inline_query(
                     asst.me.username, f"fsub {user.id}_{joinchat}"
                 )
-                await res[0].click(ayra.chat_id, reply_to=ayra.action_message.id)
+                await res[0].click(bjir.chat_id, reply_to=bjir.action_message.id)
 
-    if ayra.user_joined or ayra.added_by:
-        user = await ayra.get_user()
-        chat = await ayra.get_chat()
-        # gbans and @Kazu checks
-        if udB.get_key("KAZU_BANS"):
-            try:
-                is_banned = await async_searcher(
-                    "https://bans.kazu/api/status",
-                    json={"userId": user.id},
-                    post=True,
-                    re_json=True,
-                )
-                if is_banned["is_banned"]:
-                    await ayra.client.edit_permissions(
-                        chat.id,
-                        user.id,
-                        view_messages=False,
-                    )
-                    await ayra.client.send_message(
-                        chat.id,
-                        f'**@KazuBan:** Banned user detected and banned!\n`{str(is_banned)}`.\nBan reason: {is_banned["reason"]}',
-                    )
-
-            except BaseException:
-                pass
+    if bjir.user_joined or bjir.added_by:
+        user = await bjir.get_user()
+        chat = await bjir.get_chat()
         reason = is_gbanned(user.id)
         if reason and chat.admin_rights:
             try:
-                await ayra.client.edit_permissions(
+                await bjir.client.edit_permissions(
                     chat.id,
                     user.id,
                     view_messages=False,
                 )
                 gban_watch = get_string("can_1").format(inline_mention(user), reason)
-                await ayra.reply(gban_watch)
+                await bjir.reply(gban_watch)
             except Exception as er:
                 LOGS.exception(er)
 
-        elif get_welcome(ayra.chat_id):
-            user = await ayra.get_user()
-            chat = await ayra.get_chat()
+        # greetings
+        elif get_welcome(bjir.chat_id):
+            user = await bjir.get_user()
+            chat = await bjir.get_chat()
             title = chat.title or "this chat"
             count = (
                 chat.participants_count
-                or (await ayra.client.get_participants(chat, limit=0)).total
+                or (await bjir.client.get_participants(chat, limit=0)).total
             )
             mention = inline_mention(user)
             name = user.first_name
             fullname = get_display_name(user)
             uu = user.username
             username = f"@{uu}" if uu else mention
-            wel = get_welcome(ayra.chat_id)
+            wel = get_welcome(bjir.chat_id)
+            msgg = wel["welcome"]
             med = wel["media"] or None
             userid = user.id
             msg = None
-            if msgg := wel["welcome"]:
+            if msgg:
                 msg = msgg.format(
                     mention=mention,
                     group=title,
@@ -139,34 +116,35 @@ async def DummyHandler(ayra):
                 )
             if wel.get("button"):
                 btn = create_tl_btn(wel["button"])
-                await something(ayra, msg, med, btn)
+                await something(bjir, msg, med, btn)
             elif msg:
-                send = await ayra.reply(
+                send = await bjir.reply(
                     msg,
                     file=med,
                 )
                 await asyncio.sleep(150)
                 await send.delete()
             else:
-                await ayra.reply(file=med)
-    elif (ayra.user_left or ayra.user_kicked) and get_goodbye(ayra.chat_id):
-        user = await ayra.get_user()
-        chat = await ayra.get_chat()
+                await bjir.reply(file=med)
+    elif (bjir.user_left or bjir.user_kicked) and get_goodbye(bjir.chat_id):
+        user = await bjir.get_user()
+        chat = await bjir.get_chat()
         title = chat.title or "this chat"
         count = (
             chat.participants_count
-            or (await ayra.client.get_participants(chat, limit=0)).total
+            or (await bjir.client.get_participants(chat, limit=0)).total
         )
         mention = inline_mention(user)
         name = user.first_name
         fullname = get_display_name(user)
         uu = user.username
         username = f"@{uu}" if uu else mention
-        wel = get_goodbye(ayra.chat_id)
+        wel = get_goodbye(bjir.chat_id)
+        msgg = wel["goodbye"]
         med = wel["media"]
         userid = user.id
         msg = None
-        if msgg := wel["goodbye"]:
+        if msgg:
             msg = msgg.format(
                 mention=mention,
                 group=title,
@@ -178,23 +156,29 @@ async def DummyHandler(ayra):
             )
         if wel.get("button"):
             btn = create_tl_btn(wel["button"])
-            await something(ayra, msg, med, btn)
+            await something(bjir, msg, med, btn)
         elif msg:
-            send = await ayra.reply(
+            send = await bjir.reply(
                 msg,
                 file=med,
             )
             await asyncio.sleep(150)
             await send.delete()
         else:
-            await ayra.reply(file=med)
+            await bjir.reply(file=med)
 
 
+"""
 @kazu_bot.on(events.NewMessage(incoming=True))
 async def chatBot_replies(e):
     sender = await e.get_sender()
-    if not isinstance(sender, types.User):
+    if not isinstance(sender, types.User) or sender.bot:
         return
+    if check_echo(e.chat_id, e.sender_id):
+        try:
+            await e.respond(e)
+        except Exception as er:
+            LOGS.exception(er)
     key = udB.get_key("CHATBOT_USERS") or {}
     if e.text and key.get(e.chat_id) and sender.id in key[e.chat_id]:
         msg = await get_chatbot_reply(e.message.message)
@@ -203,21 +187,20 @@ async def chatBot_replies(e):
             await asyncio.sleep(sleep)
             await e.reply(msg)
     chat = await e.get_chat()
-    if e.is_group and not sender.bot:
-        if sender.username:
-            await uname_stuff(e.sender_id, sender.username, sender.first_name)
-    elif e.is_private and not sender.bot:
-        if chat.username:
-            await uname_stuff(e.sender_id, chat.username, chat.first_name)
+    if e.is_group and sender.username:
+        await uname_stuff(e.sender_id, sender.username, sender.first_name)
+    elif e.is_private and chat.username:
+        await uname_stuff(e.sender_id, chat.username, chat.first_name)
     if detector and is_profan(e.chat_id) and e.text:
         x, y = detector(e.text)
         if y:
             await e.delete()
+"""
 
 
 @kazu_bot.on(events.Raw(types.UpdateUserName))
 async def uname_change(e):
-    await uname_stuff(e.user_id, e.username, e.first_name)
+    await uname_stuff(e.user_id, e.usernames[0] if e.usernames else None, e.first_name)
 
 
 async def uname_stuff(id, uname, name):
