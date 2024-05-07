@@ -33,7 +33,6 @@ yt-dlp
 https://github.com/New-dev0/Telethon/archive/platy.zip
 python-decouple
 python-dotenv
-pytgcalls==3.0.0.dev24
 emoji
 gpytranslate
 Markdown
