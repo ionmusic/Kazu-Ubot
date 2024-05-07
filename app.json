@@ -1,5 +1,5 @@
 {
-    "name": "Kazu UBot",
+    "name": "Kazu Ubot",
     "description": "Kazu-Ubot Dibuat Untuk String Telethon Dan Pyrogram Untuk ID 5 Pasti Aman.",
     "logo": "https://graph.org//file/d854abd533a783c6642b1.jpg",
     "keywords": [
@@ -8,7 +8,7 @@
     ],
     "repository": "https://github.com/ionmusic/Kazu-Ubot",
     "success_url": "https://t.me/disinikazu",
-    "stack": "container",
+    "stack": "heroku-22",
     "env": {
         "API_ID": {
             "description": "Ambil di my.telegram.org",
