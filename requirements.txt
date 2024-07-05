@@ -39,3 +39,4 @@ Markdown
 ffmpeg-python
 mediainfo
 pymediainfo
+pyAV
